@@ -1,0 +1,3 @@
+SELECT nome_cliente, placa_veiculo,data_troca 
+FROM servicos s
+INNER JOIN cliente c on s.cliente_codcliente = c.codcliente INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo;

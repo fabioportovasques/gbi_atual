@@ -1,0 +1,190 @@
+﻿consultas de dados
+
+
+
+Inserir Dados:
+
+tabela funcionario
+
+insert into funcionario (matricula_func,nome_func,sobrenome_func,idade,cpf,rg,telefone1,telefone2,genero,status,data_nascimento,data_admissao,data_demissao,nacionalidade,uf,cidade,bairro,rua,cep,numero_rua,foto_func,senha,departamento_cod_dep,cargo_cod_cargo) values
+(null,'fabio geovane','porto vasques','32','02041884070','1096853031','999367651',null,'masculino','ativo','1987-11-17','2020-03-02',null,'brasileiro','rs','Bage','Pedra Branca','joaquim gasso borges','96418260','841',null,'0992','2','2');
+
+
+-------------------------------------------------------------------------------------------------------------
+tabela departamento
+
+insert into departamento(cod_departamento,nome_dep) values ('','Almoxarifado');
+-----------------------------------------------------------------------------------------------------------
+
+tabela cargo
+
+insert into cargo(cod_cargo,nome_cargo,descricao_cargo) values ('','Engenheiro Cívil','Responsavel pela atualização da planta daempresa além de obras em geral');
+-------------------------------------------------------------------------------------------------------------
+
+join:
+
+
+
+
+-----------------------------------------------------------
+trazer campos de ambas as tabelas:
+
+
+SELECT  d.nome_dep,D.cod_departamento, F.nome_funcionario,f.sobrenome_funcionario,F.data_nascimento,F.matricula_funcionario,f.cpf,f.uf 
+from departamento as d join funcionario AS f on f.matricula_funcionario
+
+filtrando por nome:
+
+SELECT d.nome_dep,f.nome_funcionario 
+from departamento AS d join funcionario AS f on f.matricula_funcionario where nome_funcionario = 'fabio geovane'
+
+select nome_funcionario, nome_dep FROM funcionario inner join departamento on funcionario.cod_departamento = departamento.cod_departamento
+
+--------------------------------------------------------------
+
+inner join com 3 tabelas:
+
+SELECT nome_func, nome_dep,nome_cargo 
+FROM funcionario fcnr
+
+INNER JOIN departamento dprt ON fcnr.departamento_cod_dep = dprt.cod_dep INNER JOIN cargo crg ON fcnr.cargo_cod_cargo =  crg.cod_cargo;
+
+
+---------------------------------------------------------------
+
+inner join 4 tabelas:
+
+SELECT nome_func, nome_dep,nome_cargo,nome_epi
+FROM funcionario fcnr
+
+INNER JOIN departamento dprt ON fcnr.departamento_cod_dep = dprt.cod_dep INNER JOIN cargo crg ON fcnr.cargo_cod_cargo =  crg.cod_cargo INNER JOIN epi e ON fcnr.epi_cod_epi = e.cod_epi;
+
+----------------------------------------------------------------------
+
+inner join 5 tabelas
+
+SELECT nome_func, nome_dep,nome_cargo
+FROM funcionario fcnr
+
+INNER JOIN departamento dprt ON fcnr.departamento_cod_dep = dprt.cod_dep INNER JOIN cargo crg ON fcnr.cargo_cod_cargo =  crg.cod_cargo;
+-----------------------------------------------------------------------------
+
+INNER JOIN com tabelas associativa:
+
+select nome_func,sobrenome_func,nome_epi
+FROM funcionario f
+INNER JOIN funcionario_epi fe
+ON f.matricula_func = fe.funcionario_matricula_func
+INNER JOIN epi e 
+ON e.cod_epi = fe.epi_cod_epi;
+
+---------------------------------------------------------------------------------------------
+INNER JOIN  com tablema associativa e tabelas normais:
+
+select nome_func,sobrenome_func,nome_epi,nome_dep
+FROM funcionario f
+INNER JOIN funcionario_epi fe
+ON f.matricula_func = fe.funcionario_matricula_func
+INNER JOIN epi e 
+ON e.cod_epi = fe.epi_cod_epi
+INNER JOIN departamento dep
+ON dep.cod_dep = f.departamento_cod_dep;
+
+-----------------------------------------------------------------------------------------
+INNER JOIN  com tablema associativa e tabelas normais:
+
+SELECT nome_func, nome_tarefa
+FROM funcionario f
+INNER JOIN funcionario_tarefa funta
+ON f.matricula_func = funcionario_matricula_func
+INNER JOIN tarefa tar
+ON tar.cod_tarefa = funta.tarefa_cod_tarefa;
+
+
+----------------------------------------------------------------------------------------
+
+INNER JOIN  com duas tabelas associativa e tabelas normais:
+
+consulta de funcionario/ EPI/ tarefa: 
+
+select nome_func,sobrenome_func,nome_epi,nome_tarefa
+FROM funcionario f
+INNER JOIN funcionario_epi fe
+ON f.matricula_func = fe.funcionario_matricula_func
+INNER JOIN epi e 
+ON e.cod_epi = fe.epi_cod_epi
+INNER JOIN funcionario_tarefa funtar
+ON funtar.funcionario_matricula_func = f.matricula_func
+INNER JOIN tarefa tar
+ON tar.cod_tarefa = funtar.tarefa_cod_tarefa;
+
+-----------------------------------------------------------------------------------
+
+consulta funcionario / EPI
+
+SELECT nome_func, nome_epi
+FROM funcionario f 
+INNER JOIN 	funcionario_epi fepi
+ON f.matricula_func = fepi.funcionario_matricula_func
+INNER JOIN epi e
+ON e.cod_epi  = fepi.epi_cod_epi;
+
+
+-----------------------------------------------------------------------------------
+
+consultar EPI/fabricante
+
+SELECT nome_fabricante, nome_epi,ca,venc_ca
+FROM fabricante f 
+INNER JOIN 	fabricante_epi fae
+ON f.cod_fabricante = fae.fabricante_cod_fabricante
+INNER JOIN epi e
+ON e.cod_epi  = fae.epi_cod_epi;
+
+-----------------------------------------------------------------------------------
+
+Consultar EPI / Fornecedor
+
+SELECT nome_epi,nome_fornecedor
+FROM epi e
+INNER JOIN fornecedor_epi fe
+ON e.cod_epi = fe.epi_cod_epi
+INNER JOIN fornecedor fo
+ON fo.cod_fornecedor = fe.fornecedor_cod_fornecedor;
+
+--------------------------------------------------------------------------------
+
+Query retornar EPI, FICHA DE EPI E FUNCIONARIO
+
+obs: sempre vincular epi_ficha_epi e funcionario_ficha_epi
+
+INSERT INTO  epi_ficha_epi(epi_cod_epi,ficha_epi_cod_ficha_epi) VALUE (1,1);
+
+INSERT INTO funcionario_ficha_epi (funcionario_matricula_func,ficha_epi_cod_ficha_epi)VALUE (1,1);
+
+
+select data_entrega_ficha,nome_epi,descricao_epi,ca,venc_ca,nome_func,sobrenome_func
+FROM ficha_epi fi
+INNER JOIN epi e
+ON fi.cod_ficha_epi = e.cod_epi
+INNER JOIN funcionario_ficha_epi  func_ficha 
+INNER JOIN funcionario func
+ON func.matricula_func = func_ficha.ficha_epi_cod_ficha_epi;
+
+----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+UPDATE
+
+UPDATE funcionario SET cod_departamento = '3'   WHERE nome_funcionario = 'jacinto'  
+
+

@@ -1,0 +1,43 @@
+       <?php
+
+
+                                          require '../../config.php';                
+
+              $total = 0;
+              $sql = "SELECT COUNT(*) as c FROM servicos";
+              $sql = $pdo->query($sql);
+              $sql = $sql->fetch();
+              $total = $sql['c'];
+              $paginas = $total / 12;
+
+
+             
+
+              $pg = 1;
+              if (isset ($_GET['p']) && !empty($_GET['p'])){    //Se o p estiver setado e não estivere vázio
+                  $pg = addslashes($_GET['p']);
+              }
+
+              $p = ($pg - 1) * 12; //vezes a quantidade de registros por página
+
+
+              $sql = "SELECT * FROM servicos LIMIT $p, 12";
+              $sql = $pdo->query($sql);
+
+              if ($sql->rowCount() > 0){
+                foreach ($sql->fetchAll() as $item) {
+                  echo $item['cod_servicos']. '-'.$item['proxima_troca'].
+                  '<br />';
+
+                }
+              }
+          
+            echo "<hr />";
+            echo "<br />";
+           for ($q=0; $q <$paginas; $q++ ) {
+              echo '<a href="./?p='.($q+1).'">[ '.($q+1).' ]</a>';
+           }
+
+
+
+                                        ?>

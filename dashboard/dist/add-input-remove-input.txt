@@ -1,0 +1,36 @@
+<script type="text/javascript">
+          $(document).ready(function() {
+        
+            //Não está em uso, mas adiciona o form após a linha
+
+              $('#add').click(() => {
+              $('#linha1').after('<label id="label_placa_veiculo">Placa</label><input type="text" id="placa_veiculo" disabled  value="<?php echo $item['placa_veiculo']; ?>" name="placa_veiculo"><label id="tipo_veiculo">Tipo Veículo</label><input type="text" id="tipo_veiculo" disabled value="<?php echo $item['tipo_veiculo']; ?>" name=""><label id="label_fabricante_veiculo">Fabricante</label> <input type="text" disabled id="fabricante_veiculo" value="<?php echo $item['fabricante_veiculo']; ?>" name=""><label id="label_modelo_veiculo">Modelo</label> <input type="text" disabled id="modelo_veiculo" value="<?php echo $item['modelo_veiculo']; ?>" name="">')
+
+            })
+
+
+
+              //Removendo inputs Filtro de óleo
+            $('#remove').click(() => {  
+            $('#label_placa_veiculo').remove()
+            $('#placa_veiculo').remove()
+            $('#tipo_veiculo').remove()
+            $('#fabricante_veiculo').remove()
+            $('#label_fabricante_veiculo').remove()
+            $('#label_modelo_veiculo').remove()
+            $('#modelo_veiculo').remove()
+            $('#tipo_veiculo').remove()
+            $('label_modelo_veiculo').remove()
+            //Remove itens da tabela
+            $('#placa').remove()
+            $('#fabricante').remove()
+            $('#modelo').remove()
+            $('#tipo').remove()
+            $('#remove').remove()
+        
+          })
+        })
+
+
+
+    </script>

@@ -1,0 +1,1 @@
+as páginas ficam dentro de dashboard -> dist 
