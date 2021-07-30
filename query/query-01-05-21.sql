@@ -419,3 +419,16 @@ inner join marca_veiculo AS m on t.codtipo_veiculo = m.tipo_veiculo_codtipo_veic
 inner join modelo_veiculo on  m.codmarca_veiculo = modelo_veiculo.marca_veiculo_codmarca_veiculo
 inner join ano on modelo_veiculo.ano_cod_ano = ano.cod_ano;
     
+    
+ 
+select 
+t.tipo_veiculo,m.marca_veiculo,modelo_veiculo,ano
+ from 
+tipo_veiculo AS t
+inner join marca_veiculo AS m on t.codtipo_veiculo = m.tipo_veiculo_codtipo_veiculo
+inner join modelo_veiculo on  m.codmarca_veiculo = modelo_veiculo.marca_veiculo_codmarca_veiculo
+inner join ano on modelo_veiculo.ano_cod_ano = ano.cod_ano
+where modelo_veiculo like "%onix%";   
+
+
+

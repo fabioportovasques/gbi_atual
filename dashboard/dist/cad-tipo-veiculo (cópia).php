@@ -299,7 +299,7 @@ if(empty($_SESSION['lg'])) {
                                                                   <label for="">Tipo de Veículo</label>
                                                                  <!--<input type="text" name="tipo_veiculo" id="tipo_veiculo" class="form-control" placeholder="Tipo "  autocomplete="off" 
                                                                   target="_blank" data-toggle="tooltip"  title="Insira o Tipo do Veículo, ex: 'carro,moto ou caminhão'" value="<?php // echo $item['tipo_veiculo']; ?>" >-->
-                                                                  <select class="form-control" name="tipo_veiculo_codtipo_veiculo">
+                                                                  <select class="form-control" name="tipo_veiculo">
                                                                      <?php 
                                                                             $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
                                                                             $select = $conexao->prepare("select * from tipo_veiculo");
@@ -332,15 +332,36 @@ if(empty($_SESSION['lg'])) {
          
                         <!--Fim da coluna-->  
                         </div>
-  
+
+
+                                  <!--inicio da coluna-->
+                                 <div class="marcado1r col-md-4"> 
+                                            <div class="form-group">
+                                                <div class="col">
+                                                    <label >Modelo do Veículo</label>
+                                                    <span class="campo-obrigatorio">*</span>
+                                                    <input type="text" name="modelo_veiculo" id="modelo_veiculo" required="" class="form-control" placeholder="Insira o modelo"  
+                                                    target="_blank" data-toggle="tooltip"  title="Insira o modelo, ex: 'ONIX HATCH 1.0 12V Flex 5p Mec.'">    
+                                                    <input type="text" name="marca_veiculo_codmarca_veiculo" value="9">
+                                                </div>
+                                            </div>
+
+                                 <!--Fim da coluna-->            
+                               </div>
+
+                               <!-- Fim da linha -->
+                                </div>
+
+                                <div class="row">
+                                <!-- Inicio da linha -->    
                            
                                   <!--Início da coluna-->          
-                                  <div class="col-md-4">
+                                  <div class="col-md-12">
                                         <div class="form-group">
                                                     <div class="   col">
                                                         <label for="cidade">Ano de Fabricação</label>
                                                         <span class="campo-obrigatorio">*</span>
-                                                           <input type="text" name="ano" id="ano" required="" class="form-control">                                                        
+                                                           <input type="text" name="ano_cod_ano" id="ano" required="" class="form-control" value="24">                                                        
                                                         
                                                     </div>
                                           </div>
@@ -361,7 +382,7 @@ if(empty($_SESSION['lg'])) {
 
                                 <!--Início da coluna-->     
                                 <div class="col-md-2 col-4">
-                                          <button type="submit" name="pesquisar"  class="btn-success bot"> Cadastrar </button>  
+                                          <button type="submit" name="pesquisar" value="cadastrar" class="btn  btn-success bot"> Cadastrar </button>  
 
                                  <!--Fim da coluna-->       
                              </div>
@@ -423,9 +444,5 @@ if(empty($_SESSION['lg'])) {
     ]
 });
 </script> 
-
-
-
-
 
 </html>

@@ -60,7 +60,7 @@ if(empty($_SESSION['lg'])) {
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/js.js"></script>
 
-                <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
         <link href="css/styles.css" rel="stylesheet"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
      
