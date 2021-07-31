@@ -288,7 +288,7 @@ if(empty($_SESSION['lg'])) {
                            
 
                           <!--Início da coluna-->         
-                          <div class="marcado1r col-md-4">
+                          <div class="marcado1r col-md-6">
                                                    <div class="col">
                                                     <?php 
 
@@ -322,7 +322,7 @@ if(empty($_SESSION['lg'])) {
 
                         
                         <!--Início da coluna-->         
-                          <div class="marcado1r col-md-4">
+                          <div class="marcado1r col-md-6">
                                        <div class="col">
                                                 <!--tras o cod do cliente do banco -->
                                                 <label for="proprietario">Marca Veículo</label>
@@ -334,20 +334,7 @@ if(empty($_SESSION['lg'])) {
                         </div>
   
                            
-                                  <!--Início da coluna-->          
-                                  <div class="col-md-4">
-                                        <div class="form-group">
-                                                    <div class="   col">
-                                                        <label for="cidade">Ano de Fabricação</label>
-                                                        <span class="campo-obrigatorio">*</span>
-                                                           <input type="text" name="ano" id="ano" required="" class="form-control">                                                        
-                                                        
-                                                    </div>
-                                          </div>
-
-                                 <!--Fim da coluna-->            
-                               </div>
-
+                                 
                                 
                          <!--Fechamento da linha-->  
                        </div>

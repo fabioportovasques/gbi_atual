@@ -57,13 +57,19 @@
 
 			/*****************Inserir na tabela ano*********************/
 
+			/******Inservcao tabela ano******/
+
+			/*
+
 			$insert2 = "insert into ano values(null,?)";
 			$dados2 = [$_REQUEST['ano']];
 			$stmt = $conexao->prepare($insert2);
 			$result2 = $conexao->prepare($insert2);
 			$result2 = $stmt->execute($dados2);
 		
-		
+			*/
+
+
 			 include 'modal_cad_modelo.php';
 		
 			/* inserir tabela modelo do veículo */

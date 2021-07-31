@@ -9,6 +9,18 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
+ <style type="text/css">
+
+     .bot {
+            width: 140px;
+            position: relative;            
+            margin: 5px;
+            padding:5px;
+            top: -2px;
+
+          }
+
+      </style>   
         
                 <!--Link para icones-->
 
@@ -17,6 +29,7 @@
 </head>
 <body>
 
+        <!-- Inicio do modal -->
 
       	
    			<div class="modal fade" id="modal-mensagem">
@@ -31,12 +44,13 @@
 
               <div class="row">
 
-                <form action="" method="POST">
+                <form action="cad_modelo_insert.php" method="POST">
 
                  <!--Início da coluna-->         
                           <div class="marcado1r col-md-4">
 
-                                    
+                                          
+                          <form  method="POST">
 
                                             <div class="form-group">
                                                     <div class="   col">
@@ -57,11 +71,10 @@
                          <!--Início da coluna-->         
                           <div class="marcado1r col-md-4">
 
-                          <form action="cad_veiculo_insert.php" method="POST">
                                         <label for="">Marca do  Veículo</label>
                                        <!--<input type="text" name="tipo_veiculo" id="tipo_veiculo" class="form-control" placeholder="Tipo "  autocomplete="off" 
                                         target="_blank" data-toggle="tooltip"  title="Insira o Tipo do Veículo, ex: 'carro,moto ou caminhão'" value="<?php // echo $item['tipo_veiculo']; ?>" >-->
-                                        <select class="form-control" name="tipo_veiculo_codtipo_veiculo">
+                                        <select class="form-control" name="marca_veiculo_codmarca_veiculo ">
                                            <?php 
                                                   $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
                                                   $select = $conexao->prepare("select * from marca_veiculo");
@@ -86,7 +99,7 @@
                                                         <label for="cidade">Ano de Fabricação</label>
                                                         <span class="campo-obrigatorio">*</span>
                                                                     
-                                                          <select class="form-control" name="tipo_veiculo_codtipo_veiculo">
+                                                          <select class="form-control" name="ano_cod_ano">
                                                                <?php 
                                                                       $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
                                                                       $select = $conexao->prepare("select * from ano");
@@ -100,29 +113,39 @@
                                                               ?>
                                                             </select>
 
+
+
                                                     </div>
                                           </div>
 
                         <!--Fim da coluna-->  
                         </div>
 
-                        </form>
+                        
                 
               </div>
 
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cadastrar</button>
+              <button type="submit"  class="btn  btn-success bot" > Cadastrar </button>  
             </div>
+
+            </form>
         </div>
     </div>
 </div>
 
 
-<button class="btn btn-primary" data-toggle="modal" data-target="#modal-mensagem">
+
+<!-- Botão para chamar o modal -->
+
+<button class="btn btn-primary bot" data-toggle="modal" data-target="#modal-mensagem">
 Pŕoximo Passo...
 </button>
+
+<a class="btn btn-primary bot" href="cad-tipo-veiculo.php" role="button">Voltar</a>
+
 
 </body>
 </html>
