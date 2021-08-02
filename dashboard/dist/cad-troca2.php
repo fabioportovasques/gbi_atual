@@ -263,8 +263,53 @@ if(empty($_SESSION['lg'])) {
    <div class="container formulario">
 
 
+<?php   
+
+     $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
+      $select = $conexao->prepare("
+
+                  select 
+                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                    WHERE
+                      p.pro < CURRENT_DATE
+
+        ");
+      $select ->execute();
+      $fetchAll = $select->fetchAll();
 
 
+
+?>
+
+
+<?php 
+
+    foreach ($fetchAll AS $item) {
+
+        ?>
+
+        <input type="" name="" value="<?php  echo $item['filtro_combustivel'] ; ?>" >
+
+        <?php 
+    }
+
+    ?>
+
+    
                         <h2 class="text-center">Dados Da Troca</h2><br />
                                            <hr />
 
@@ -279,31 +324,16 @@ if(empty($_SESSION['lg'])) {
                                                     <form action=""  method="POST" name="actionJava">
                                                       <div class="col">
                                                         
-                                                                <?php
-                                                                
-                                                                   $filtro_combustivel = $_POST['filtro_combustivel'];
-                                                                   $filtro_cabine = $_POST['filtro_cabine'];
-                                                                   $filtro_ar = $_POST['filtro_ar'];
-                                                                   $filtro_oleo = $_POST['filtro_oleo'];
-                                                                   $tipo_oleo = $_POST['tipo_oleo'];
-                                                                   $qtd_oleo = $_POST['qtd_oleo'];
-                                                                   $km = $_POST['km'];
-                                                                   $obs_troca = $_POST['obs_troca'];
-                                                                   //enviando dados para os campos radios
-                                                                   $status_filtro_combustivel = $_POST['status_filtro_combustivel'];
-                                                                   $status_filtro_ar = $_POST['status_filtro_ar'];
-                                                                   $status_filtro_oleo = $_POST['status_filtro_oleo'];
-                                                                   $status_filtro_cabine = $_POST['status_filtro_cabine'];
+                                                              
 
-
-                                                                 
-                                                                ?>  
+                                                               
 
                                                                   <label> Filtro de Combustível</label>
                                                                     <span class="campo-obrigatorio"></span>
-                                                                    <input type="text" name="filtro_combustivel" class="form-control" value="<?php echo $filtro_combustivel ?>" style="text-align: left;" >  <br />
+                                                                    <input type="text" name="filtro_combustivel" class="form-control" value="<?php echo $fetchAll['filtro_combustivel']; ?>" style="text-align: left;" >  <br />
                                                                     <label>Trocado?</label><br />
 
+                                                                
 
                                                                       <?php if ($status_filtro_combustivel=['sim']) {
 

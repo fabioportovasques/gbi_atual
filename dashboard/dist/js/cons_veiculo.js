@@ -13,7 +13,7 @@ $(function(){
                 var rows = "";
                 list.find("select option").remove();
                 $(resultado).each(function(){
-                    rows += "<option value = "+this.codigo+">"+this.nome+"</option>";
+                    rows += "<option value = "+this.codigo+">"+this.codigo+"</option>";
                    
                     list.find("select").html(rows);
                 })
@@ -31,10 +31,10 @@ $(function(){
 
 
 
-    $('#marca_veiculo').on('change', function(){
+    $('#fabricante_veiculo').on('change', function(){
 
         let tpveiculo = $('#tipo_veiculo').val();
-        let marcaveiculo = $('#marca_veiculo').val();
+        let marcaveiculo = $('#fabricante_veiculo').val();
 
         
         $.ajax({

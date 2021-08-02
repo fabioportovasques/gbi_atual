@@ -1,5 +1,14 @@
 <?php
 
+?>
+<pre>
+	<?php
+var_dump($_POST);
+	?>
+</pre>	
+<?php
+/*
+
 	include 'veiculo.class.php';
 
 	$veiculo = new Veiculo();
@@ -11,7 +20,7 @@
 	if (!empty($_POST['placa_veiculo'])) {
 
 		/*remove a mascara do campo cpf/cnpj para inserir no banco*/
-		
+/*		
 
 		$placa_veiculo= $_POST['placa_veiculo'];
 		$tipo_veiculo = $_POST['tipo_veiculo'];
@@ -40,3 +49,4 @@
 
 	}
 
+*/
