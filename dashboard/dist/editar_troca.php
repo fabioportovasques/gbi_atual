@@ -295,29 +295,30 @@
 
                        <!--Início da linha-->    
                   <div class="row">
-                                                   
+                                                 
 
                                         <!--Início da coluna-->  
                                         <div class="marcador1 col-md-4">
 
                                                  <div class="form-group">
                                                              <div class="form-group">
-                                                                  <div class="col">
+                                                                  <div class="col"><form action=""  method="POST" name="actionJava"  > 
+
                                                                       <label>Filtro de Cabine</label>
                                                                         <span class="campo-obrigatorio"></span>
                                                                         <div class="input-group">
                                                                               <div class="input-group-prepend">
                                                                                 <div class="input-group-text"> 
-                                                                                    
+
                                                                                      <?php if ($info['status_filtro_cabine']==nao) {
                                                                                               ?>
 
-                                                                                              <input type="radio" name="status_filtro_cabine" checked="nao">NAO
-                                                                                              <input type="radio" name="status_filtro_cabine">SIM <?php 
+                                                                                              <input type="radio" class="form-control" value="nao" name="status_filtro_cabine" checked="nao">NAO
+                                                                                              <input type="radio" value="sim" name="status_filtro_cabine">SIM <?php 
                                                                                             }else {
                                                                                               ?>
-                                                                                              <input type="radio" name="status_filtro_cabine" checked="sim">SIM 
-                                                                                              <input type="radio" name="status_filtro_cabine">NAO<?php 
+                                                                                              <input type="radio" name="status_filtro_cabine" value="sim" checked="sim">SIM 
+                                                                                              <input type="radio" value="nao" name="status_filtro_cabine">NAO<?php 
                                                                                              
                                                                                             }
                                                                                               
@@ -352,12 +353,12 @@
                                                                                   <?php if ($info['status_filtro_combustivel']==nao) {
                                                                                               ?>
 
-                                                                                              <input type="radio" name="status_filtro_combustivel" checked="nao">NAO
-                                                                                              <input type="radio" name="status_filtro_combustivel">SIM <?php 
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="nao" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="sim">SIM <?php 
                                                                                             }else {
                                                                                               ?>
-                                                                                              <input type="radio" name="status_filtro_combustivel" checked="sim">SIM 
-                                                                                              <input type="radio" name="status_filtro_combustivel">NAO<?php 
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="sim" checked="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="nao">NAO<?php 
                                                                                              
                                                                                             }
                                                                                               
@@ -397,12 +398,12 @@
                                                                                      <?php if ($info['status_filtro_ar']==nao) {
                                                                                               ?>
 
-                                                                                              <input type="radio" name="status_filtro_ar" checked="nao">NAO
-                                                                                              <input type="radio" name="status_filtro_ar">SIM <?php 
+                                                                                              <input type="radio" name="status_filtro_ar" value="nao" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_ar" value="sim">SIM <?php 
                                                                                             }else {
                                                                                               ?>
-                                                                                              <input type="radio" name="status_filtro_ar" checked="sim">SIM 
-                                                                                              <input type="radio" name="status_filtro_ar">NAO<?php 
+                                                                                              <input type="radio" name="status_filtro_ar" checked="sim" value="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_ar" value="nao">NAO<?php 
                                                                                              
                                                                                             }
                                                                                               
@@ -449,12 +450,12 @@
                                                                                       <?php if ($info['status_filtro_oleo']==nao) {
                                                                                               ?>
 
-                                                                                              <input type="radio" name="status_filtro_oleo" checked="nao">NAO
-                                                                                              <input type="radio" name="status_filtro_oleo">SIM <?php 
+                                                                                              <input type="radio" name="status_filtro_oleo" checked="nao" value="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_oleo" value="sim">SIM <?php 
                                                                                             }else {
                                                                                               ?>
-                                                                                              <input type="radio" name="status_filtro_oleo" checked="sim">SIM 
-                                                                                              <input type="radio" name="status_filtro_oleo">NAO<?php 
+                                                                                              <input type="radio" name="status_filtro_oleo" checked="sim" value="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_oleo" value="nao">NAO<?php 
                                                                                              
                                                                                             }
                                                                                               
@@ -501,6 +502,13 @@
                                                                         <label>Quantidade de óleo</label>
                                                                         <span class="campo-obrigatorio"></span>
                                                                         <input type="number" name="qtd_oleo" value="<?php echo $info['qtd_oleo']; ?>" class="form-control">
+                                                                        <!--campo hidden para salvar na tabela (proxima_troca) chave estrangeira servicos_cod_servicos -->
+                                                                       <input type="hidden" name="servicos_cod_servicos" value="<?php echo $info['cod_servicos'] ; ?>">
+                                                                        <input type="hidden" name="cliente_codcliente" value="<?php echo $info['codcliente'] ; ?>">
+                                                                        <input type="hidden" name="veiculo_cod_veiculo" value="<?php echo $info['cod_veiculo'] ; ?>">
+
+
+
                                                                     </div>
 
                                                              </div>
@@ -578,14 +586,48 @@
                        <div class="row">
 
                                   <!--Início da coluna-->   
-                                  <div class="marcador1 col-md-12">
+                                  <div class="marcador1 col-md-4">
 
                                           <div class="form-group">
                                               
                                                       <div class="   col">
                                                           <label > Observação</label>
-                                                          <input type="" name="" class="form-control" value="<?php  echo $info['obs_troca'];  ?>">
+                                                          <input type="" name="obs_troca" class="form-control" value="<?php  echo $info['obs_troca'];  ?>">
                                                           <input type="hidden" name="Atual">
+                                                      </div>
+                                                
+                                           </div>
+
+
+                                                        
+                                  <!--Fim da coluna-->      
+                                  </div>
+
+                                    <!--Início da coluna-->   
+                                  <div class="marcador1 col-md-4">
+
+                                          <div class="form-group">
+                                              
+                                                      <div class="   col">
+                                                          <label > Placa</label>
+                                                          <input type="" name="" class="form-control" value="<?php  echo $info['placa'];  ?>">                                                         
+                                                      </div>
+                                                
+                                           </div>
+
+
+                                                        
+                                  <!--Fim da coluna-->      
+                                  </div>
+
+                                   <!--Início da coluna-->   
+                                  <div class="marcador1 col-md-4">
+
+                                          <div class="form-group">
+                                              
+                                                      <div class="   col">
+                                                          <label > OBS</label>
+                                                          <input type="" name="obs_troca" class="form-control" value="<?php  echo $info['obs_troca'];  ?>">                                                         
                                                       </div>
                                                 
                                            </div>
@@ -636,19 +678,24 @@
 
                 <br />
      
-     <!--debugar
+   
 
      <?php 
+     /***Debugando****/
+
+ /*  
       ?>
       <pre>
         <?php
       var_dump($info);
         ?>
       </pre>
-
+   */   
+      
       ?>
 
-    -->
+
+   
 
    <!--Fechamento container--> 
     </div>           

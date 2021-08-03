@@ -13,7 +13,7 @@ $(function(){
                 var rows = "";
                 list.find("select option").remove();
                 $(resultado).each(function(){
-                    rows += "<option value = "+this.codigo+">"+this.codigo+"</option>";
+                    rows += "<option value = "+this.codigo+">"+this.nome+"</option>";
                    
                     list.find("select").html(rows);
                 })
@@ -37,6 +37,7 @@ $(function(){
         let marcaveiculo = $('#fabricante_veiculo').val();
 
         
+       
         $.ajax({
             method:'GET',
             url:'https://parallelum.com.br/fipe/api/v1/'+tpveiculo+'/marcas/'+marcaveiculo+'/modelos',
@@ -56,7 +57,7 @@ $(function(){
                     let tarray = resultado.modelos.length;
                     for (let index = 0; index < tarray; index++) {
                     
-                        rows += "<option value = "+this.modelos[index].codigo+">"+this.modelos[index].nome+"</option>";
+                        rows += "<option value = '"+this.modelos[index].nome+"'>"+this.modelos[index].nome+"</option>";
                    
                         list.find("select").html(rows);
 
@@ -73,4 +74,13 @@ $(function(){
             }
         })
     })
+
+
+   /* $('.fabricante_veiculo').on('change', function(){
+
+        let descmarcaveiculo = $(this).('#fabricante_veiculo').html();
+
+        alert(descmarcaveiculo);
+
+    })*/
 })

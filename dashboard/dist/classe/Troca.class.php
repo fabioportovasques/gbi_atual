@@ -1,3 +1,13 @@
+<?php
+session_start();
+require '../../config.php';
+if(empty($_SESSION['lg'])) {
+    header("Location: ../../index.php");
+    exit; 
+}   
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +34,7 @@ class Troca {
 		$sql = "
 
 		 select
-                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                      p.cod AS 'cod_veiculo', codcliente, cod_servicos,v.placa_veiculo AS 'placa',
                         v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
                         c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
                         c.telefone1_cliente AS 'telefone1',
@@ -33,7 +43,7 @@ class Troca {
                         qtd_oleo, obs_troca,km,data_troca,p.pro AS 'proxima_troca'
                     FROM
                       (SELECT
-                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,filtro_cabine,
+                          veiculo_cod_veiculo AS cod,cod_servicos, filtro_combustivel AS fil,filtro_cabine,
                           filtro_ar,filtro_oleo,tipo_oleo,status_filtro_cabine,status_filtro_combustivel,status_filtro_oleo,status_filtro_ar,qtd_oleo,obs_troca,km,data_troca,
                           cliente_codcliente AS cli, max(proxima_troca) AS pro
                          FROM

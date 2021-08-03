@@ -389,10 +389,11 @@ if(empty($_SESSION['lg'])) {
                                                 <div id="marca-veiculo-area"> 
                                                     <label for="cidade">Marca do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
-                                                        <select class="form-control" id="fabricante_veiculo"  name="fabricante_veiculo" >
+                                                        <select class="form-control fabricante_veiculo" id="fabricante_veiculo"  name="fabricante_veiculo" >
                                                             <option value="resultado">Selecionar</option>
                                                          </select>    
                                                          <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
+                                                    <input class="fabricante" type="text" id="fabricante" name="fabricante" value="" style="display: none;">
                                                 </div>
                                               </div>  
                                     </div>
@@ -414,7 +415,7 @@ if(empty($_SESSION['lg'])) {
                                                     <div class="   col"  id="modelo-veiculo-area">
                                                         <label for="">Modelo do Veículo</label>
                                                         <span class="campo-obrigatorio">*</span>
-                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo" value="resultado" aria-label="Default select example">
+                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo"  aria-label="Default select example">
                                                                 
                                                              </select>    
                                                     </div>

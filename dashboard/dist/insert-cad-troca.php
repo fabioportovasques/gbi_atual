@@ -1,4 +1,19 @@
 <?php
+	
+/*Debugar*/
+
+/*
+	
+	?>
+	<pre>
+		<?php
+	var_dump($_POST);
+		?>
+	</pre>
+	
+	
+
+	*/
 
 	 require 'troca.class.php';
 	
