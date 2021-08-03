@@ -12,6 +12,7 @@
   $troca = new Troca();
   $info = $troca->getInfo($cod_veiculo);
 
+
   
 
 ?>
@@ -273,7 +274,7 @@
            
    <div class="container formulario">
 
-    
+
 
      <!--DEbugar
 
@@ -307,12 +308,20 @@
                                                                         <div class="input-group">
                                                                               <div class="input-group-prepend">
                                                                                 <div class="input-group-text"> 
-                                                                                    <span class="radio">SIM</span>                                                                                    
-                                                                                  <input type="radio" name="status_filtro_cabine" data-toggle="tooltip"  data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="sim" aria-label="Botão radio para acompanhar input text">                                                                                                                                                                  
-                                                                                    <span class="radio">NÃO</span>
-                                                                                  <input type="radio" name="status_filtro_cabine" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="nao" aria-label="Botão radio para acompanhar input text">
-                                                                                     
+                                                                                    
+                                                                                     <?php if ($info['status_filtro_cabine']==nao) {
+                                                                                              ?>
 
+                                                                                              <input type="radio" name="status_filtro_cabine" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_cabine">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_cabine" checked="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_cabine">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?>
 
                                                                                 </div>
                                                                               </div>                                                                              
@@ -339,11 +348,20 @@
                                                                         <span class="campo-obrigatorio"></span>
                                                                         <div class="input-group">
                                                                               <div class="input-group-prepend">
-                                                                                <div class="input-group-text">
-                                                                                    <span class="radio">SIM</span> 
-                                                                                  <input type="radio" name="status_filtro_combustivel" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="sim" aria-label="Botão radio para acompanhar input text">
-                                                                                      <span class="radio">NÃO</span> 
-                                                                                  <input type="radio" name="status_filtro_combustivel" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="nao" aria-label="Botão radio para acompanhar input text">
+                                                                                 <div class="input-group-text">
+                                                                                  <?php if ($info['status_filtro_combustivel']==nao) {
+                                                                                              ?>
+
+                                                                                              <input type="radio" name="status_filtro_combustivel" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_combustivel">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_combustivel" checked="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_combustivel">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?>
 
 
 
@@ -375,10 +393,20 @@
                                                                         <div class="input-group">
                                                                               <div class="input-group-prepend">
                                                                                 <div class="input-group-text">
-                                                                                     <span class="radio">SIM</span> 
-                                                                                  <input type="radio" name="status_filtro_ar" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="sim" aria-label="Botão radio para acompanhar input text">
-                                                                                         <span class="radio">NÃO</span> 
-                                                                                  <input type="radio" name="status_filtro_ar" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="nao" aria-label="Botão radio para acompanhar input text">
+                                                                                    
+                                                                                     <?php if ($info['status_filtro_ar']==nao) {
+                                                                                              ?>
+
+                                                                                              <input type="radio" name="status_filtro_ar" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_ar">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_ar" checked="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_ar">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?> 
 
 
                                                                                 </div>
@@ -417,11 +445,20 @@
                                                                         <div class="input-group">
                                                                               <div class="input-group-prepend">
                                                                                 <div class="input-group-text">
-                                                                                     <span class="radio">SIM</span> 
-                                                                                  <input type="radio" name="status_filtro_oleo" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="sim" aria-label="Botão radio para acompanhar input text">
-                                                                                           <span class="radio">NÃO</span> 
-                                                                                  <input type="radio" name="status_filtro_oleo" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" value="nao" aria-label="Botão radio para acompanhar input text">
+                                                                                     
+                                                                                      <?php if ($info['status_filtro_oleo']==nao) {
+                                                                                              ?>
 
+                                                                                              <input type="radio" name="status_filtro_oleo" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_oleo">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_oleo" checked="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_oleo">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?> 
 
 
                                                                                 </div>
@@ -587,7 +624,7 @@
                                  <div class="col-md-2 col-4 ">
                                    <div class="col-"> 
                                          <div class="form-group">
-                                            <input class="btn btn-success container btn-block" type="reset" name="password"  value="Limpar">
+                                          <!--  <input class="btn btn-success container btn-block" type="reset" name="password"  value="Limpar">-->
                                         </div>    
                                     </div>   
                                 <!--Fim da coluna-->   
@@ -599,6 +636,19 @@
 
                 <br />
      
+     <!--debugar
+
+     <?php 
+      ?>
+      <pre>
+        <?php
+      var_dump($info);
+        ?>
+      </pre>
+
+      ?>
+
+    -->
 
    <!--Fechamento container--> 
     </div>           

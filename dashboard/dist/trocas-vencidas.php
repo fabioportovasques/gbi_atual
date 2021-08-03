@@ -491,7 +491,7 @@ if(empty($_SESSION['lg'])) {
                   </td> 
                   <!--<td data-toggle="tooltip"  title="Troca óleo Agora"><i class="glyphicon glyphicon-tint icones" onblur="validar(getElementById('cpf_cnpj').value)" >  </i></td>-->
                 <td><!--<button type="submit" name="pesquisar_placa" value="<?php  $item ['cod_veiculo'];    ?>" class="btn "  data-toggle="tooltip"  title="Trocar óleo Agora?"><img src= "img/oleo-de-carro.png" width="25px" style="color:red;"></i> </button>-->
-               <a class="btn btn-outline-light"  href="editar.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
+               <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
                 </td>                  
                 <!--<td><input type="submit" name=""   value="Troca Óleo"  ></td>-->
 
