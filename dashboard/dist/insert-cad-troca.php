@@ -26,7 +26,7 @@
 				print '<div class="alert alert-warning" role="alert">
 						  Favor preencher o campo com o CPF/CNPJ do cliente
 						</div>';
-				print '<script>window.setTimeout(function(){window.location=\'cad-troca.php\';}, 5000);</script>';
+				print '<script>window.setTimeout(function(){window.location=\'index.php\';}, 5000);</script>';
 
 
 			}
