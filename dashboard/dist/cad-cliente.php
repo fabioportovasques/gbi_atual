@@ -162,10 +162,7 @@ if(empty($_SESSION['lg'])) {
                                     <a class="nav-link" href="cad-cliente.php">Cadastro Clientes</a>
                                     <a class="nav-link" href="cad-veiculo.php">Cadastro Veiculos</a>
                                     <a class="nav-link" href="cad-troca.php">Troca de Óleo</a>
-                                    <a class="nav-link" href="#">Cadastro  Filtro Combustivel</a>
-                                    <a class="nav-link" href="#">Cadastro  Filtro Cabine</a>
-                                    <a class="nav-link" href="#">Cadastro  Filtro Oleo</a>
-                                   <a class="nav-link" href="#">Cadastro  Filtro Ar</a>
+                                   
                                    
                                 </nav>
                             </div>
@@ -196,10 +193,7 @@ if(empty($_SESSION['lg'])) {
                                         Veiculos
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-                                     <a class="nav-link collapsed" href="#">
-                                        Compátibilidade de Itens
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
+                                    
                                      
 
                                 </nav>

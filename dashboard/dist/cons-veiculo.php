@@ -400,15 +400,8 @@ if(empty($_SESSION['lg'])) {
                                     <div class="form-group">
                                                 <div class="   col">
                                                     <label for="">Fabricante Veículo</label>
-                                                        <select name="fabricante_veiculo" id="fabricante_veiculo" class="form-control">
-                                                             <?php foreach ($lista as $item) { ?>
-                                                             <option value="<?php echo $item['fabricante_veiculo'] ?>"><?php echo $item['fabricante_veiculo'] ?></option>
-                                                             <?php } ?>
-                                                             <option>Fiat</option>
-                                                             <option>Chevrolet</option>
-                                                             <option>Volkswagen</option>
-                                                        </select>             
-
+                                                            <input type="text"  name="fabricante_veiculo" id="fabricante_veiculo" class="form-control" value="<?php echo $item['fabricante_veiculo'] ?>">
+                                                          
                                                 </div>
                                             </div>
 
@@ -427,15 +420,8 @@ if(empty($_SESSION['lg'])) {
 
                                                      <div class="col">
                                                                     <label for="">Modelo do Veículo</label>
-                                                                    <span class="campo-obrigatorio">*</span>
-                                                                        <select name="modelo_veiculo" id="modelo_veiculo" class="form-control">
-                                                                             <?php foreach ($lista as $item) { ?>
-                                                                             <option value="<?php echo $item['modelo_veiculo'] ?>"><?php echo $item['modelo_veiculo'] ?></option>
-                                                                             <?php } ?>
-                                                                             <option>Gol</option>
-                                                                             <option>uno</option>
-                                                                             <option>Onix</option>
-                                                                        </select>    
+                                                                    <span class="campo-obrigatorio">*</span>                                                                        
+                                                                            <input type="text" name="modelo_veiculo" id="modelo_veiculo" class="form-control" value="<?php echo $item['modelo_veiculo'] ?>">                                                                                                                                                   
                                                                 
                                                          </div>
 
@@ -450,7 +436,7 @@ if(empty($_SESSION['lg'])) {
                                                                 <div class="   col">
                                                                     <label > Ano de Fabricação</label>
                                                                     <span class="campo-obrigatorio"></span>
-                                                                    <input type="date" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" value="<?php echo $item['ano_fabricacao_veiculo'] ; ?>">    
+                                                                    <input type="text" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" value="<?php echo $item['ano_fabricacao_veiculo'] ; ?>">    
                                                                 </div>
                                                             </div>
 
