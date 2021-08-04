@@ -1,0 +1,94 @@
+   SELECT
+                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel',status_filtro_cabine, p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,status_filtro_cabine,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                    WHERE
+                      p.pro < CURRENT_DATE;
+                      
+                      
+                      
+                      
+                      select * from servicos where cod_servicos = "82";
+                      
+                      
+                      
+                      select
+                      p.cod AS 'cod_veiculo', cod_servicos,codcliente, v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel',filtro_cabine,status_filtro_cabine, filtro_ar,filtro_oleo,tipo_oleo,status_filtro_combustivel,status_filtro_ar,
+                        status_filtro_oleo,
+                        qtd_oleo, obs_troca,km,data_troca,p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod,cod_servicos, filtro_combustivel AS fil,filtro_cabine,
+                          filtro_ar,filtro_oleo,tipo_oleo,status_filtro_cabine,status_filtro_combustivel,status_filtro_oleo,status_filtro_ar,qtd_oleo,obs_troca,km,data_troca,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo;
+
+
+
+
+    /*
+                        Funcionando, retorna as datas vencidas que 
+                        são menores que hoje e que não possuem data de troca superior
+                       */
+                       
+                       SELECT
+                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                    WHERE
+                      p.pro < CURRENT_DATE
+                        
+                        /*memor que 90 dias */
+SELECT
+                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                     where p.pro <current_date() AND 
+						p.pro between now() - interval 90 day AND now()                        
+                        
+                

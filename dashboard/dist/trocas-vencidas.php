@@ -397,14 +397,19 @@ if(empty($_SESSION['lg'])) {
 
             */
 
+                   
+
                    $sql ="
+                   
+                        
+                       
                    
                         /*
                         Funcionando, retorna as datas vencidas que 
                         são menores que hoje e que não possuem data de troca superior
                        */
                        
-                       SELECT
+                       select 
                       p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
                         v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
                         c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',

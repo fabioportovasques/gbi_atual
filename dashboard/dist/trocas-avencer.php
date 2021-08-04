@@ -387,15 +387,24 @@ if(empty($_SESSION['lg'])) {
 
               
                 $sql = " 
-
-                select c.nome_cliente,c.sobrenome_cliente, v.placa_veiculo,v.modelo_veiculo,
-                s.filtro_combustivel,s.filtro_cabine,s.obs_troca,s.filtro_ar,
-                s.filtro_oleo,s.proxima_troca,s.data_troca,s.tipo_oleo,s.status_filtro_combustivel,
-                s.status_filtro_cabine,s.status_filtro_ar,s.status_filtro_oleo,s.km,s.qtd_oleo
-                FROM servicos s
-                INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
-                INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-                where   proxima_troca between now() - interval 30 day AND now() 
+select 
+                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                    WHERE
+                       p.pro BETWEEN CURRENT_DATE AND date_add(CURRENT_DATE , INTERVAL 30 day)
                    LIMIT $p, 12";
                    $sql = $pdo->query($sql);
 
@@ -441,13 +450,13 @@ if(empty($_SESSION['lg'])) {
                     <!--Campo hidden serve para enviar as informações de forma invisivel para
                       o usuario final-->
                      <input class="form-itens" type="hidden" name="telefone1_cliente" value="
-                      <?php echo $item['nome_cliente'];  ?>" >
-                      <?php echo $item['nome_cliente'];  ?> 
+                      <?php echo $item['nome'];  ?>" >
+                      <?php echo $item['nome'];  ?> 
                   </td>
                   <td>
                      <input class="form-itens" type="hidden" name="telefone1_cliente" value="
-                      <?php echo $item['sobrenome_cliente'];  ?>" >
-                      <?php echo $item['sobrenome_cliente'];  ?> 
+                      <?php echo $item['sobrenome'];  ?>" >
+                      <?php echo $item['sobrenome'];  ?> 
                   </td>
                   <td>
                      <input class="form-itens" type="hidden" name="placa_veiculo" value="
@@ -467,8 +476,8 @@ if(empty($_SESSION['lg'])) {
                   </td>
                   <td>
                     <input class="form-itens" type="hidden" name="telefone1_cliente" value="
-                      <?php echo $item['telefone1_cliente'];  ?>" >
-                      <?php echo $item['telefone1_cliente'];  ?>                      
+                      <?php echo $item['telefone1'];  ?>" >
+                      <?php echo $item['telefone1'];  ?>                      
                   </td> 
 
                   <td>
