@@ -464,7 +464,7 @@
 
                                                                                 </div>
                                                                               </div>
-                                                                              <input type="text" class="form-control" name="filtro_oleo" id="filtro_oleo" value="<?php echo $info['filtro_ar']; ?>" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" aria-label="Input text com botão radio">
+                                                                              <input type="text" class="form-control" name="filtro_oleo" id="filtro_oleo" value="<?php echo $info['filtro_oleo']; ?>" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" aria-label="Input text com botão radio">
 
                                                                             </div>
 
@@ -620,23 +620,7 @@
                                   <!--Fim da coluna-->      
                                   </div>
 
-                                   <!--Início da coluna-->   
-                                  <div class="marcador1 col-md-4">
-
-                                          <div class="form-group">
-                                              
-                                                      <div class="   col">
-                                                          <label > OBS</label>
-                                                          <input type="" name="obs_troca" class="form-control" value="<?php  echo $info['obs_troca'];  ?>">                                                         
-                                                      </div>
-                                                
-                                           </div>
-
-
-                                                        
-                                  <!--Fim da coluna-->      
-                                  </div>
-
+                                  
                                  
 
                       <!--Fechamento da linha--> 

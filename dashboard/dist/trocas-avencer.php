@@ -10,10 +10,87 @@ if(empty($_SESSION['lg'])) {
 
 ?>
 
-    <!DOCTYPE html>
+
+
+ <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Trocas de óleo realizadas</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href="css/styles.css" rel="stylesheet"/>
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                 <!--javascript para API IBGE Valida cep-->
+        <script type="text/javascript" src="./js/validaCep.js"></script>
+            <!--javascript para validar CPF/CNPJ-->
+         <script type="text/javascript" src="./js/validaCpfCnpj.js"></script>
+           <!--javascript para mascara  CPF/CNPJ-->
+         <script src="https://unpkg.com/imask"></script>
+          <!--javascript para mascara telefone-->
+       <script type="text/javascript" src="./js/masTelefone.js"></script>
+
+
+                    <!--Link para icones-->
+       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+        <style type="text/css">
+        
+          /*Aumenta o tamanho dos icones*/
+            i.glyphicon.icones {
+          font-size: 20px;
+          color:red;
+          }
+
+
+          /*
+            Remover bordas de forms
+          */
+          .form-itens:focus {
+             box-shadow:none;
+          }
+
+
+        </style>
+
+          <!--multiplos submit-->
+              <script type="text/javascript">
+                    function selecionaAction(script){
+                        document.actionJava.action = script + '.php';
+                        document.actionJava.submit();
+                    }
+           </script>
+
+
+     <script>
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>   
+
+    <style type="text/css">
+        
+     body{
+              padding: 20px;
+              margin: 0px;
+          }
+
+
+
+
+
+    </style>
+
+
+    <meta charset="utf-8" />
          <link rel="icon" type="image/png" href="img/oleo.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -267,7 +344,7 @@ if(empty($_SESSION['lg'])) {
                             
                     
                 </nav>
-        </div>            
+        </div>             
 
 
             <!--conteudo do meio -->
@@ -308,37 +385,21 @@ if(empty($_SESSION['lg'])) {
 
             //puxar os registros do banco
 
-              /*
-                $sql = " select 
-                veiculo_cod_veiculo, v.placa_veiculo,v.tipo_veiculo,v.modelo_veiculo,
-                c.nome_cliente,c.sobrenome_cliente,
-                max(proxima_troca) from servicos s  
+              
+                $sql = " 
+
+                select c.nome_cliente,c.sobrenome_cliente, v.placa_veiculo,v.modelo_veiculo,
+                s.filtro_combustivel,s.filtro_cabine,s.obs_troca,s.filtro_ar,
+                s.filtro_oleo,s.proxima_troca,s.data_troca,s.tipo_oleo,s.status_filtro_combustivel,
+                s.status_filtro_cabine,s.status_filtro_ar,s.status_filtro_oleo,s.km,s.qtd_oleo
+                FROM servicos s
                 INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
                 INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-                    where 
-                    proxima_troca between now() - interval 30 day AND now() < current_date()
-                group by veiculo_cod_veiculo, nome_cliente, sobrenome_cliente having max(proxima_troca)
-                 < current_date()
+                where   proxima_troca between now() - interval 30 day AND now() 
                    LIMIT $p, 12";
                    $sql = $pdo->query($sql);
 
 
-                */
-
-
-
-                $sql = "
-
-           select 
-          veiculo_cod_veiculo, v.placa_veiculo,v.tipo_veiculo,v.modelo_veiculo,
-          c.nome_cliente,c.sobrenome_cliente,s.proxima_troca,c.telefone1_cliente
-           from servicos s  
-          INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
-          INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-           where 
-            proxima_troca between current_date() AND current_date() + interval 30 day
-           LIMIT $p, 6";
-                $sql = $pdo->query($sql);
                 
              ?>          
 
@@ -460,12 +521,11 @@ if(empty($_SESSION['lg'])) {
                       <?php echo $item['status_filtro_cabine'];  ?>" > 
           
                   <!--<td data-toggle="tooltip"  title="Troca óleo Agora"><i class="glyphicon glyphicon-tint icones" onblur="validar(getElementById('cpf_cnpj').value)" >  </i></td>-->
-                <td><button type="submit" name="pesquisar_placa" value="pesquisar" class="btn "  data-toggle="tooltip"  title="Trocar óleo Agora?"><img src= "img/oleo-de-carro.png" width="25px" style="color:red;"></i> </button></td>                  
+                <td>
+                   <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
+                </td>                  
                 <!--<td><input type="submit" name=""   value="Troca Óleo"  ></td>-->
 
-                <td onClick="this.parentNode.remove();">
-                  <button type="submit" name="" value="pesquisar" class="btn "  data-toggle="tooltip"  title="Excluir Item"><i class="glyphicon glyphicon-trash icones" style="color:red;"></i>
-                </td>
                 <!--<td><a href="cad-troca2.php?veiculo_cod_veiculo=<?php print $item['veiculo_cod_veiculo']; ?>">Avaliar</a></td>-->                 
 
                 </tr>

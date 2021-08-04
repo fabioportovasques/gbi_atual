@@ -389,11 +389,19 @@ if(empty($_SESSION['lg'])) {
                                                 <div id="marca-veiculo-area"> 
                                                     <label for="cidade">Marca do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
-                                                        <select class="form-control fabricante_veiculo" id="fabricante_veiculo"  name="fabricante_veiculo" >
+                                                        <select class="form-control" id="fabricante_veiculo"  name="fabricante_veiculo" >
                                                             <option value="resultado">Selecionar</option>
-                                                         </select>    
+                                                         </select>   
                                                          <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
-                                                    <input class="fabricante" type="text" id="fabricante" name="fabricante" value="" style="display: none;">
+                                                    
+                                                </div>
+                                                <div id="fabricante-area" style="display: none;"> 
+                                                    <!--Campo invisivel para coletar as informações do veiculo do arquivo JS e enviar para o insert_veiculo-->
+                                                         <select class="form-control" id="fabricante"  name="fabricante" >
+                                                            <option value="resultado">Selecionar</option>
+                                                         </select>      
+                                                         <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
+                                                    
                                                 </div>
                                               </div>  
                                     </div>

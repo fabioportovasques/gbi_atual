@@ -335,13 +335,14 @@ if(empty($_SESSION['lg'])) {
                                               $sql = " 
 
                                            select COUNT(*) AS vencer,
-                                          veiculo_cod_veiculo, v.placa_veiculo,v.tipo_veiculo,v.modelo_veiculo,
-                                          c.nome_cliente,c.sobrenome_cliente,s.proxima_troca
-                                           from servicos s  
-                                          INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
-                                          INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-                                            where 
-                                            proxima_troca between current_date() AND current_date() + interval 30 day
+                                         c.nome_cliente,c.sobrenome_cliente, v.placa_veiculo,v.modelo_veiculo,
+                                        s.filtro_combustivel,s.filtro_cabine,s.obs_troca,s.filtro_ar,
+                                        s.filtro_oleo,s.proxima_troca,s.data_troca,s.tipo_oleo,s.status_filtro_combustivel,
+                                        s.status_filtro_cabine,s.status_filtro_ar,s.status_filtro_oleo,s.km,s.qtd_oleo
+                                        FROM servicos s
+                                        INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
+                                        INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
+                                        where   proxima_troca between now() - interval 30 day AND now() ;
 
                                             ;
 

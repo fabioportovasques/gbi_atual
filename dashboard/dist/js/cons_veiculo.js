@@ -10,12 +10,17 @@ $(function(){
             success: function(resultado)
             {
                 var list = $('#marca-veiculo-area');
+                var nlist = $('#fabricante-area');
                 var rows = "";
+                var nrows = "";
                 list.find("select option").remove();
+                nlist.find("select option").remove();
                 $(resultado).each(function(){
                     rows += "<option value = "+this.codigo+">"+this.nome+"</option>";
+                    nrows += "<option value = '"+this.nome+"'>"+this.nome+"</option>";
                    
                     list.find("select").html(rows);
+                    nlist.find("select").html(nrows);
                 })
                 
 
