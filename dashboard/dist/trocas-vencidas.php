@@ -413,11 +413,11 @@ if(empty($_SESSION['lg'])) {
                       p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
                         v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
                         c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
-                        c.telefone1_cliente AS 'telefone1',
+                        c.telefone1_cliente AS 'telefone1',data_troca,
                         p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
                     FROM
                       (SELECT
-                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          veiculo_cod_veiculo AS cod,data_troca, filtro_combustivel AS fil,
                           cliente_codcliente AS cli, max(proxima_troca) AS pro
                          FROM
                           servicos GROUP BY veiculo_cod_veiculo) p
@@ -447,10 +447,11 @@ if(empty($_SESSION['lg'])) {
                  
                 <th>Nome</hd>
                 <th>Sobrenome</th>
-                <th>placa do veículo</th>
-                <th>proxima troca </th>
+                <th>Placa do veículo</th>
+                <th>Data troca </th>
+                <th>Proxima troca </th>
                 <th>Telefone </th>
-                <th>Filtro de combustivel </th>
+                             
                  <th colspan="2" align="center">Ações </th>
               </tr>
             </thead>
@@ -478,7 +479,13 @@ if(empty($_SESSION['lg'])) {
                      <input class="form-itens" type="hidden" name="placa_veiculo" value="
                       <?php echo $item['placa'];  ?>" >
                       <?php echo $item['placa'];  ?> 
+                  </td>
                   <td>
+                    <?php 
+                         echo date('d/m/Y', strtotime($item['data_troca'])); 
+                      ?>
+                  </td>
+                     <td>
                     <?php 
                        echo date('d/m/Y', strtotime($item['proxima_troca']));
                       ?>
@@ -492,7 +499,7 @@ if(empty($_SESSION['lg'])) {
                   <td>
                     <input class="form-itens" type="hidden" name="telefone1_cliente" value="
                       <?php echo $item['telefone1'];  ?>" >
-                      <?php echo $item['filtro_combustivel'];  ?>                      
+                                         
                   </td> 
                   <!--<td data-toggle="tooltip"  title="Troca óleo Agora"><i class="glyphicon glyphicon-tint icones" onblur="validar(getElementById('cpf_cnpj').value)" >  </i></td>-->
                 <td><!--<button type="submit" name="pesquisar_placa" value="<?php  $item ['cod_veiculo'];    ?>" class="btn "  data-toggle="tooltip"  title="Trocar óleo Agora?"><img src= "img/oleo-de-carro.png" width="25px" style="color:red;"></i> </button>-->

@@ -387,15 +387,15 @@ if(empty($_SESSION['lg'])) {
 
               
                 $sql = " 
-select 
-                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                select 
+                      p.cod AS 'cod_veiculo',status_filtro_cabine,data_troca, v.placa_veiculo AS 'placa',
                         v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
                         c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
                         c.telefone1_cliente AS 'telefone1',
                         p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
                     FROM
                       (SELECT
-                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          veiculo_cod_veiculo AS cod,status_filtro_cabine,data_troca, filtro_combustivel AS fil,
                           cliente_codcliente AS cli, max(proxima_troca) AS pro
                          FROM
                           servicos GROUP BY veiculo_cod_veiculo) p
@@ -432,13 +432,15 @@ select
                 <th>proxima troca </th>
                 <th>Telefone </th>
               
-                 <th colspan="3" align="center">Ações </th>
+                 <th colspan="5" align="center">Ações </th>
               </tr>
             </thead>
               <?php 
                   if ($sql->rowCount() > 0){
                           foreach ($sql->fetchAll() as $item) {
            
+                                //var_dump($item);
+
                         ?>  
            
 
@@ -460,9 +462,10 @@ select
                   </td>
                   <td>
                      <input class="form-itens" type="hidden" name="placa_veiculo" value="
-                      <?php echo $item['placa_veiculo'];  ?>" >
-                      <?php echo $item['placa_veiculo'];  ?> 
+                      <?php echo $item['placa'];  ?>" >
+                      <?php echo $item['placa'];  ?> 
 
+                  </td>
                   <td>
                     <?php 
                        echo date('d/m/Y', strtotime($item['data_troca']));
@@ -488,6 +491,7 @@ select
                   <input class="form-itens" type="hidden" name="filtro_combustivel" value="
                       <?php echo $item['filtro_combustivel'];  ?>" >   
                       <!--retornar valores dos campos radios-->
+                     
                       <input class="form-itens" type="hidden" name="status_filtro_combustivel" value="
                       <?php echo $item['status_filtro_combustivel'];  ?>" >  
 
@@ -530,7 +534,7 @@ select
                       <?php echo $item['status_filtro_cabine'];  ?>" > 
           
                   <!--<td data-toggle="tooltip"  title="Troca óleo Agora"><i class="glyphicon glyphicon-tint icones" onblur="validar(getElementById('cpf_cnpj').value)" >  </i></td>-->
-                <td>
+                <td align="center">
                    <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
                 </td>                  
                 <!--<td><input type="submit" name=""   value="Troca Óleo"  ></td>-->

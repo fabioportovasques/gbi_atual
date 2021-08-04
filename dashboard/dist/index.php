@@ -13,7 +13,7 @@ if(empty($_SESSION['lg'])) {
     <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8" >
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
          <link rel="icon" type="image/png" href="img/oleo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -333,16 +333,24 @@ if(empty($_SESSION['lg'])) {
                                       //Contar quantidade de serviços
                                               //require '../../config.php';
                                               $sql = " 
-
-                                           select COUNT(*) AS vencer,
-                                         c.nome_cliente,c.sobrenome_cliente, v.placa_veiculo,v.modelo_veiculo,
-                                        s.filtro_combustivel,s.filtro_cabine,s.obs_troca,s.filtro_ar,
-                                        s.filtro_oleo,s.proxima_troca,s.data_troca,s.tipo_oleo,s.status_filtro_combustivel,
-                                        s.status_filtro_cabine,s.status_filtro_ar,s.status_filtro_oleo,s.km,s.qtd_oleo
-                                        FROM servicos s
-                                        INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
-                                        INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-                                        where   proxima_troca between now() - interval 30 day AND now() ;
+                select 
+                     COUNT(*) AS vencer, p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                    WHERE
+                       p.pro BETWEEN CURRENT_DATE AND date_add(CURRENT_DATE , INTERVAL 30 day)
 
                                             ;
 

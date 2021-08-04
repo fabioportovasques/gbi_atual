@@ -440,7 +440,7 @@ if(empty($_SESSION['lg'])) {
                                                             <div class="   col">
                                                                 <label > Ano de Fabricação</label>
                                                                 <span class="campo-obrigatorio"></span>
-                                                                <input type="date" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Nascimento"  autocomplete="off"  >    
+                                                                <input type="text" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Insira o ano de fabricação do veículo"  autocomplete="off"  >    
                                                             </div>
                                                         </div>
 
