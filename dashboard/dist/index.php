@@ -296,11 +296,11 @@ if(empty($_SESSION['lg'])) {
                         <div class="row">
                             
                              <div class="col-xl-4 col-md-4" >
-                                <div class="" style="background-color: #3CB371";>
+                                <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body "style="color:black;background-color: #E6E6FA;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo realizadas</div>
+                                    <div class="card-body "style="color:black;background-color:#3CB371;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo realizadas</div>
                                     <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
-                                        <a class=""style="color:black; text-decoration:none;" href="trocas-realizadas.php">
+                                        <a class=""style="color:white; text-decoration:none;" href="trocas-realizadas.php">
 
                                           <?php 
 
@@ -330,11 +330,11 @@ if(empty($_SESSION['lg'])) {
                                 </div>
                             </div>
                                <div class="col-xl-4 col-md-4" >
-                                <div class="" style="background-color: #FF8C00";>
+                                <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body "style="color:black;background-color: #E6E6FA;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo a Vencer</div>
+                                    <div class="card-body "style="color:black;background-color: #FF8C00;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo a Vencer</div>
                                     <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
-                                        <a class=""style="color:black; text-decoration:none;" href="trocas-avencer.php">
+                                        <a class=""style="color:white; text-decoration:none;" href="trocas-avencer.php">
 
                                    <?php
 
@@ -383,11 +383,11 @@ if(empty($_SESSION['lg'])) {
                                 </div>
                             </div>
                              <div class="col-xl-4 col-md-4" >
-                                <div class="" style="background-color: #FF4500";>
+                                <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body "style="color:black;background-color: #E6E6FA;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo Vencidas</div>
+                                    <div class="card-body "style="color:black;background-color: #FF4500;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo Vencidas</div>
                                     <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
-                                        <a class=""style="color:black; text-decoration:none;" href="trocas-vencidas.php">
+                                        <a class=""style="color:white; text-decoration:none;" href="trocas-vencidas.php">
                                     
                                      <?php
 
