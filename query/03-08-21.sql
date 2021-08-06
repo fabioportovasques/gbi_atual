@@ -69,10 +69,21 @@
                         INNER JOIN veiculo v
                         ON p.cod = v.cod_veiculo
                     WHERE
-                      p.pro < CURRENT_DATE
+                      p.pro < CURRENT_DATE;
                         
                         /*memor que 90 dias */
-SELECT
+                        
+					SELECT 
+                       date_sub(proxima_troca, INTERVAL  10 day) FROM servicos;
+                       
+                       
+                         select proxima_troca from servicos
+                where   date_add(current_date, interval 10 day) ;
+                
+                
+                
+                
+select 
                       p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
                         v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
                         c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
@@ -88,7 +99,18 @@ SELECT
                         ON p.cli = c.codcliente
                         INNER JOIN veiculo v
                         ON p.cod = v.cod_veiculo
-                     where p.pro <current_date() AND 
-						p.pro between now() - interval 90 day AND now()                        
-                        
+                    WHERE
+                       p.pro BETWEEN CURRENT_DATE AND date_add(CURRENT_DATE , INTERVAL 190 day);
+                       
+                       
+             /*trocas no mes atual */          
+                       
+select count(*) as total, data_troca from servicos 
+where month(data_troca) = 
+month(current_date())
+AND year(data_troca) = year(current_date());                      
+                       
+                       
+                       
+
                 

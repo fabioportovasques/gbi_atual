@@ -85,6 +85,14 @@ if(empty($_SESSION['lg'])) {
           }
 
 
+
+             @media (mim-width: 567px) {
+
+                .grafico {
+                width: 80px;
+               
+              } 
+
     </style>
 
 
@@ -440,26 +448,16 @@ if(empty($_SESSION['lg'])) {
                       
                        <hr />
                            
-                        <div class="row">
-                            <div class="col-xl-6">
+                        <div class="row grafico">
+                            <div class="col-xl-12">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area mr-1"></i>
-                                       Troca de Óleos Realizadas em carros
+                                       <?php  require 'grafico.php'  ?>
                                     </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar mr-1"></i>
-                                        Troca de Óleos Realizadas em Motos
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
+                           </div>
+                         </div>  
                        
 
 

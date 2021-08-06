@@ -2,10 +2,6 @@
 
 
 
-
-
-
-
      $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
       $select = $conexao->prepare("select * from veiculo");
       $select ->execute();
