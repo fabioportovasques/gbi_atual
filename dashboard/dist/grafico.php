@@ -60,6 +60,6 @@
     </script>
   </head>
   <body>
-    <div class="grafico" id="piechart" style="width: 900p; height: 500px;"></div>
+    <div class="grafico" id="piechart" style="width: 950p; height: 500px;"></div>
   </body>
 </html>
