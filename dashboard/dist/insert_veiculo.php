@@ -1,15 +1,21 @@
 <?php
 
-/*Debugar
+/*Debugar*/
+
+/*
 ?>
 <pre>
 	<?php
 var_dump($_POST);
+$fabricante =$_POST['fabricante'];
 	?>
 </pre>	
 <?php
 
 */
+
+
+	
 
 	include 'veiculo.class.php';
 
@@ -22,6 +28,7 @@ var_dump($_POST);
 	if (!empty($_POST['placa_veiculo'])) {
 
 		/*remove a mascara do campo cpf/cnpj para inserir no banco*/
+		
 		
 
 		$placa_veiculo= $_POST['placa_veiculo'];
@@ -51,3 +58,4 @@ var_dump($_POST);
 
 	}
 
+	

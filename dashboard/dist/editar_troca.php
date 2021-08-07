@@ -639,7 +639,7 @@
                                  <div class="col-md-2 col-4">
                                     <div class="col-">
                                         <div class="form-group">                                            
-                                            <button class="btn btn-success btn-block" type="submit" onclick="selecionaAction('insert-cad-troca');"  >Salvar</button>                                           
+                                            <button class="btn btn-success btn-block" type="submit" onclick="selecionaAction('insert-cad-troca-teste');"  >Salvar</button>                                           
                                         </div>    
                                          </div>
                                  <!--Fim da coluna-->       

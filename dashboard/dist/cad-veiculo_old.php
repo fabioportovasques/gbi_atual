@@ -55,8 +55,6 @@ if(empty($_SESSION['lg'])) {
 
            </script>
 
-          
-
      <script>
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();   
@@ -185,23 +183,19 @@ if(empty($_SESSION['lg'])) {
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                       
                        <!--icones -->
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="sair.php">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                                 </svg>
                        &nbsp Trocar Usuário</a>
 
-                        <a class="dropdown-item"   href="/tcc/segware-epi/sobre.php">
+                        <a class="dropdown-item"   href="#">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
                         </svg>
                        &nbsp Sobre</a>
 
-                        <a class="dropdown-item" href="#">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-octagon-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM6.57 6.033H5.25C5.22 4.147 6.68 3.5 8.006 3.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H7.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z"/>
-                        </svg>
-                        &nbsp Ajuda</a>
+                      
 
                         
                         <div class="dropdown-divider"></div>
@@ -392,34 +386,34 @@ if(empty($_SESSION['lg'])) {
                                                     <label for="cidade">Marca do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
                                                         <select class="form-control" id="fabricante_veiculo"  name="fabricante_veiculo" >
-                                                            <option value="resultado" >Selecionar</option>
+                                                            <option value="resultado">Selecionar</option>
                                                          </select>   
                                                          <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
                                                     
                                                 </div>
-                                                
+                                                <div id="fabricante-area" style="display: none;"> 
+                                                    <!--Campo invisivel para coletar as informações do veiculo do arquivo JS e enviar para o insert_veiculo-->
+                                                         <select class="form-control" id="fabricante"  name="fabricante" >
+                                                            <option value="resultado">Selecionar</option>
+                                                         </select>      
+                                                         <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
+                                                    
+                                                </div>
                                               </div>  
                                     </div>
-
-                                                            
-
 
                                  <!--Fim da coluna-->           
                                   </div>
 
-                                   
-
+                                  
                                     <!--Fechamento da linha--> 
                                      </div>
 
                                    <!--Início da linha-->     
                                    <div class="row">
 
-                                             
-
-                                            <!--Início da coluna-->         
+                                             <!--Início da coluna-->         
                                              <div class=" col-md-4">
-
 
                                                <div class="form-group">
                                                     <div class="   col"  id="modelo-veiculo-area">
@@ -435,27 +429,22 @@ if(empty($_SESSION['lg'])) {
                                             <!--Fim da coluna-->             
                                             </div>
 
-                                                     <!--Início da coluna-->         
-                                             <div class=" col-md-4">
+                                                    <!--Início da coluna-->   
+                                                     <div class="marcador1 col-md-4">
 
-                                                
+                                                      <div class="form-group">
+                                                            <div class="   col">
+                                                                <label > Ano de Fabricação</label>
+                                                                <span class="campo-obrigatorio"></span>
+                                                                <input type="text" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Insira o ano de fabricação do veículo"  autocomplete="off"  >    
+                                                            </div>
+                                                        </div>
 
-                                                    <div id="fabricante-area"  >
-                                                    <!--Campo invisivel para coletar as informações do veiculo do arquivo JS e enviar para o insert_veiculo-->
-                                                         <label for="cidade">Confirmar Marca Veículo</label>
-                                                         <span class="campo-obrigatorio"></span>
-                                                         <select  class="form-control" id="fabricante"  name="fabricante" required="" >
-                                                            <option value="fabricante_veiculo" value="fabricante">Selecionar</option>
-                                                         </select>      
-                                            
-                                                      </div>
-
-                                                  <!--Fim da coluna-->           
-                                                    </div> 
-
+                                        <!--Fim da coluna-->       
+                                         </div>
 
                                                  <!--Início da coluna-->       
-                                                   <div class="col-md-2">
+                                                   <div class="col-md-4">
                                                          <div class="col">
                                                                         <label for="cidade">Cor do Veículo</label>
                                                                         <span class="campo-obrigatorio"></span>
@@ -467,21 +456,7 @@ if(empty($_SESSION['lg'])) {
 
                                             <!--Fim da coluna-->            
                                              </div>
-                                                          
-
-                                             <!--Início da coluna-->   
-                                                     <div class="marcador1 col-md-2">
-
-                                                      <div class="form-group">
-                                                            <div class="   col">
-                                                                <label > Ano de Fabricação</label>
-                                                                <span class="campo-obrigatorio"></span>
-                                                                <input type="text" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Ano"  autocomplete="off"  >    
-                                                            </div>
-                                                        </div>
-
-                                        <!--Fim da coluna-->       
-                                         </div>              
+                                                                    
 
 
                          <!--Fechamento da linha-->  
@@ -566,28 +541,9 @@ if(empty($_SESSION['lg'])) {
 /* valida informações dos veiculos*/
 
 <script type="text/javascript">
-   
+    
 
-    $('#fabricante_veiculo').keyup(function(){
-    $('#fabricante3').val($(this).val());
-    });
-
-
-
+    
 
 
 </script>
-
-
-<!--
-
- <script type="text/javascript">
-              
-                    $('#fabricante_veiculo').keyup(function(){
-                    $('#fabricante').val($(this).val());
-                    });
-
-
-           </script>
-
--->           
