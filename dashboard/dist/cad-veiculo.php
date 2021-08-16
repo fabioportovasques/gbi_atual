@@ -32,6 +32,8 @@ if(empty($_SESSION['lg'])) {
         <title>Cad Veículo</title>
         
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/cons_veiculo.js"></script>
+        
          <script type="text/javascript" src="js/cad-veiculo.js"></script>
         <link href="css/styles.css" rel="stylesheet"/>
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -359,56 +361,40 @@ if(empty($_SESSION['lg'])) {
                            
                                   <!--Início da coluna-->          
                                   <div class="marcador1 col-md-4">
-
-                                    <?php 
-                        
-                                                $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
-
-
-                                       ?>
-                                        <div class="form-group">
-                                                    <div class="col">
+                                     <div id="tipo-veiculo-area">   
+                             
+                                        <div class="form-group">                                             
+                                                    <div class="col">                                                       
                                                         <label for="cidade">Tipo Veículo</label>
                                                         <span class="campo-obrigatorio">*</span>
-                                                            <select class="form-control"  name="tipo_veiculo" id="tipo_veiculo" >
-                                                                 <?php 
-                                                                        $select = $conexao->prepare("select * from tipo_veiculo");
-                                                                        $select ->execute();
-                                                                        $fetchAll = $select->fetchAll();
-
-                                                                             echo '<option>Selecionar</option>';
-                                                                            foreach($fetchAll as  $tipo_veiculo){
-                                                                                echo '<option value="'.$tipo_veiculo['codtipo_veiculo'].'">'.$tipo_veiculo['tipo_veiculo'].'</option>';
-                                                                            }
-                                                                    ?>
-                                
-                                                             
-                                                                
+                                                            <select class="form-control"  name="tipo_veiculo" id="tipo_veiculo" aria-label="Default select example" >
+                                                                <option value=""></option>
+                                                                        <option value="carros">Carros</option>
+                                                                        <option value="motos">Motos</option>
+                                                                        <option value="caminhoes">Caminhões</option>
+                                                                                                               
                                                             </select>    
                                                     </div>
+                                                </div>    
                                           </div>
 
                                  <!--Fim da coluna-->            
                                </div>
 
-                               <?php 
-                                        
-                                        $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
-
-
-                               ?>
-
+                 
                                   <!--Início da coluna-->        
                                     <div class="marcador1 col-md-4">
                                     <div class="form-group">
-                                                <div class="   col"  id="marca-veiculo-area">
+                                            <div class="col">
+                                                <div id="marca-veiculo-area"> 
                                                     <label for="cidade">Marca do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
-                                                        <select class="form-control" id="marca_veiculo" name="marca_veiculo" >
+                                                        <select class="form-control" id="marca_veiculo" name="marca_veiculo" aria-label="Default select example">
                                                             
                                                          </select>    
                                                          <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
                                                 </div>
+                                              </div>  
                                     </div>
 
                                  <!--Fim da coluna-->           
@@ -428,10 +414,9 @@ if(empty($_SESSION['lg'])) {
                                                     <div class="   col"  id="modelo-veiculo-area">
                                                         <label for="">Modelo do Veículo</label>
                                                         <span class="campo-obrigatorio">*</span>
-                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo">
+                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo" aria-label="Default select example">
                                                                 
                                                              </select>    
-                                                             <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
                                                     </div>
                                                  </div>
 

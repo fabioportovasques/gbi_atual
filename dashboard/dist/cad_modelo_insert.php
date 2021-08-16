@@ -16,7 +16,7 @@
         });
     </script> 
 
-    
+
 
 </head>
 <body>
@@ -57,5 +57,5 @@
 						  Inserido Com Sucesso!
 						</div>';
 						
-				echo "<script>window.setTimeout(function(){window.location=\'cad-tipo-veiculo.php\';}, 2000);</script>";
+				print "<script>window.setTimeout(function(){window.location=\'cad-tipo-veiculo.php\';}, 2000);</script>";
 		
