@@ -5,9 +5,18 @@ if(empty($_SESSION['lg'])) {
     header("Location: ../../index.php");
     exit;
 }
+     
+         require 'cliente.class.php';
 
+          $cliente = new Cliente();
 
-?>
+         $lista = $cliente->pesquisar_veiculo();
+            foreach ($lista as $item):
+
+         
+
+  ?>
+  <?php endforeach; ?>
 
   
 
@@ -20,8 +29,12 @@ if(empty($_SESSION['lg'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cadastro de Tipo Veículo</title>
+        <title>Cad Veículo</title>
         
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/cons_veiculo.js"></script>
+        
+         <script type="text/javascript" src="js/cad-veiculo.js"></script>
         <link href="css/styles.css" rel="stylesheet"/>
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
@@ -271,14 +284,29 @@ if(empty($_SESSION['lg'])) {
     <br />
  
 
-                                           <h2 class="text-center">Cadastrar Tipo de Veículo</h2><br />
+                                           <h2 class="text-center">Dados do Veículo</h2><br />
 
                                            <hr>
                                            
                 <!--Início da linha-->     
                 <div class="row">
 
-                               
+                                <!--Início da coluna-->         
+                                 <div class="col-md-4">
+                                             <form action=""  method="POST" name="actionJava" > 
+
+                                                  <div class="input-group mb-3 input">
+                                                    <label for="proprietario">Proprietário</label>
+                                                          <input type="text" name="cpf_cliente" id="cpf_cnpj"  class="form-control" placeholder="CPF"  autocomplete="off" aria-label="Recipient's username"
+                                                           aria-describedby="button-addon2" onblur="validar(getElementById('cpf_cnpj').value)" value="<?php echo $item['cpf_cliente']; ?>">
+                                                          <div class="input-group-append">
+                                                            <button type="submit" class="btn btn-success" type="button" id="button-addon2" name="pesquisar"
+                                                            onclick="selecionaAction('cad-veiculo');" value="pesquisar" ><i class="fas fa-search"></i></button>
+                                                          </div>
+                                                    </div>  
+                                <!--Fim da coluna-->  
+                              </div>
+
 
 
                            
@@ -286,31 +314,8 @@ if(empty($_SESSION['lg'])) {
                           <!--Início da coluna-->         
                           <div class="marcado1r col-md-4">
                                                    <div class="col">
-                                                    <?php 
-
-                                                        require '../../config.php';
-                                                    ?>
-
-                                                    <form action="cad_veiculo_insert.php" method="POST">
-                                                                  <label for="">Tipo de Veículo</label>
-                                                                 <!--<input type="text" name="tipo_veiculo" id="tipo_veiculo" class="form-control" placeholder="Tipo "  autocomplete="off" 
-                                                                  target="_blank" data-toggle="tooltip"  title="Insira o Tipo do Veículo, ex: 'carro,moto ou caminhão'" value="<?php // echo $item['tipo_veiculo']; ?>" >-->
-                                                                  <select class="form-control" name="tipo_veiculo">
-                                                                     <?php 
-                                                                            $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
-                                                                            $select = $conexao->prepare("select * from tipo_veiculo");
-                                                                            $select ->execute();
-                                                                            $fetchAll = $select->fetchAll();
-
-                                                                                 echo '<option>Selecionar</option>';
-                                                                                foreach($fetchAll as  $tipo_veiculo){
-                                                                                    echo '<option value="'.$tipo_veiculo['codtipo_veiculo'].'">'.$tipo_veiculo['tipo_veiculo'].'</option>';
-                                                                                }
-                                                                    ?>
-                                                                  </select>
-
-                                                                 <!-- <input type="text" name="tipo_veiculo_codtipo_veiculo" value="1">-->
-
+                                                                  <label for="proprietario">Nome do Proprietário</label>
+                                                                 <input type="text" name="nome_cliente" disabled="" id="nome_cliente" class="form-control" placeholder="Nome Proprietário"  autocomplete="off"  value="<?php echo $item['nome_cliente']; ?>" >
                                                     </div>
 
                            <!--Fim da coluna-->  
@@ -321,51 +326,139 @@ if(empty($_SESSION['lg'])) {
                           <div class="marcado1r col-md-4">
                                        <div class="col">
                                                 <!--tras o cod do cliente do banco -->
-                                                <label for="proprietario">Marca Veículo</label>
-                                                <input type="text" name="marca_veiculo" class="form-control" required="" placeholder="Marca Veículo" 
-                                                target="_blank" data-toggle="tooltip"  title="Insira a Marca, ex: 'chevrolet'">
-                                        </div>
+                                                <label for="proprietario">Cod do Proprietário</label>
+                                                <input type="number" name="cliente_codcliente" class="form-control" readonly value="<?php echo $item['codcliente'] ?>">
+                                           </div>
          
                         <!--Fim da coluna-->  
                         </div>
+
+                                    <!-- fim da linha-->
+                                    </div> 
+
+                                    <br />
+
+                                    <!--inicio da linha -->
+                                     <div class="row">
 
 
                                   <!--inicio da coluna-->
                                  <div class="marcado1r col-md-4"> 
                                             <div class="form-group">
                                                 <div class="col">
-                                                    <label >Modelo do Veículo</label>
+                                                    <label >Placa do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
-                                                    <input type="text" name="modelo_veiculo" id="modelo_veiculo" required="" class="form-control" placeholder="Insira o modelo"  
-                                                    target="_blank" data-toggle="tooltip"  title="Insira o modelo, ex: 'ONIX HATCH 1.0 12V Flex 5p Mec.'">    
-                                                    <input type="text" name="marca_veiculo_codmarca_veiculo" value="9">
+                                                    <input type="text" name="placa_veiculo" id="placa_veiculo" class="form-control" placeholder="Insira a Placa"  target="_blank" data-toggle="tooltip"  title="Insira a placa para pesquisar">    
                                                 </div>
                                             </div>
 
                                  <!--Fim da coluna-->            
                                </div>
-
-                               <!-- Fim da linha -->
-                                </div>
-
-                                <div class="row">
-                                <!-- Inicio da linha -->    
                            
                                   <!--Início da coluna-->          
-                                  <div class="col-md-12">
-                                        <div class="form-group">
-                                                    <div class="   col">
-                                                        <label for="cidade">Ano de Fabricação</label>
+                                  <div class="marcador1 col-md-4">
+                                     <div id="tipo-veiculo-area">   
+                             
+                                        <div class="form-group">                                             
+                                                    <div class="col">                                                       
+                                                        <label for="cidade">Tipo Veículo</label>
                                                         <span class="campo-obrigatorio">*</span>
-                                                           <input type="text" name="ano_cod_ano" id="ano" required="" class="form-control" value="24">                                                        
-                                                        
+                                                            <select class="form-control"  name="tipo_veiculo" id="tipo_veiculo" aria-label="Default select example" >
+                                                                <option value=""></option>
+                                                                        <option value="carros">Carros</option>
+                                                                        <option value="motos">Motos</option>
+                                                                        <option value="caminhoes">Caminhões</option>
+                                                                                                               
+                                                            </select>    
                                                     </div>
+                                                </div>    
                                           </div>
 
                                  <!--Fim da coluna-->            
                                </div>
 
-                                
+                 
+                                  <!--Início da coluna-->        
+                                    <div class="marcador1 col-md-4">
+                                    <div class="form-group">
+                                            <div class="col">
+                                                <div id="marca-veiculo-area"> 
+                                                    <label for="cidade">Marca do Veículo</label>
+                                                    <span class="campo-obrigatorio">*</span>
+                                                        <select class="form-control" id="fabricante_veiculo"  name="fabricante_veiculo" >
+                                                            <option value="resultado">Selecionar</option>
+                                                         </select>   
+                                                         <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
+                                                    
+                                                </div>
+                                                <div id="fabricante-area" style="display: none;"> 
+                                                    <!--Campo invisivel para coletar as informações do veiculo do arquivo JS e enviar para o insert_veiculo-->
+                                                         <select class="form-control" id="fabricante"  name="fabricante" >
+                                                            <option value="resultado">Selecionar</option>
+                                                         </select>      
+                                                         <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
+                                                    
+                                                </div>
+                                              </div>  
+                                    </div>
+
+                                 <!--Fim da coluna-->           
+                                  </div>
+
+                                  
+                                    <!--Fechamento da linha--> 
+                                     </div>
+
+                                   <!--Início da linha-->     
+                                   <div class="row">
+
+                                             <!--Início da coluna-->         
+                                             <div class=" col-md-4">
+
+                                               <div class="form-group">
+                                                    <div class="   col"  id="modelo-veiculo-area">
+                                                        <label for="">Modelo do Veículo</label>
+                                                        <span class="campo-obrigatorio">*</span>
+                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo"  aria-label="Default select example">
+                                                                
+                                                             </select>    
+                                                    </div>
+                                                 </div>
+
+
+                                            <!--Fim da coluna-->             
+                                            </div>
+
+                                                    <!--Início da coluna-->   
+                                                     <div class="marcador1 col-md-4">
+
+                                                      <div class="form-group">
+                                                            <div class="   col">
+                                                                <label > Ano de Fabricação</label>
+                                                                <span class="campo-obrigatorio"></span>
+                                                                <input type="text" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Insira o ano de fabricação do veículo"  autocomplete="off"  >    
+                                                            </div>
+                                                        </div>
+
+                                        <!--Fim da coluna-->       
+                                         </div>
+
+                                                 <!--Início da coluna-->       
+                                                   <div class="col-md-4">
+                                                         <div class="col">
+                                                                        <label for="cidade">Cor do Veículo</label>
+                                                                        <span class="campo-obrigatorio"></span>
+                                                                       <input type="text" name="cor_veiculo" id="cor_veiculo" class="form-control" placeholder="Cor"  autocomplete="off"  >    
+
+                                                                    
+                                                             </div>
+
+
+                                            <!--Fim da coluna-->            
+                                             </div>
+                                                                    
+
+
                          <!--Fechamento da linha-->  
                        </div>
                   
@@ -378,10 +471,10 @@ if(empty($_SESSION['lg'])) {
 
                                 <!--Início da coluna-->     
                                 <div class="col-md-2 col-4">
-                                          <button type="submit" name="pesquisar" value="cadastrar" class="btn  btn-success bot"> Cadastrar </button>  
+                                          <button type="submit" name="pesquisar" value="cadastrar" class="btn  btn-success bot" onclick="selecionaAction('insert_veiculo');" > Cadastrar </button>  
 
-                                 <!--Fim da coluna-->       
-                             </div>
+                     <!--Fim da coluna-->       
+                    </div>
 
 
                                  <!--Início da coluna-->    
@@ -441,4 +534,16 @@ if(empty($_SESSION['lg'])) {
 });
 </script> 
 
+
+
 </html>
+
+/* valida informações dos veiculos*/
+
+<script type="text/javascript">
+    
+
+    
+
+
+</script>

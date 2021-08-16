@@ -55,6 +55,8 @@ if(empty($_SESSION['lg'])) {
 
            </script>
 
+          
+
      <script>
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();   
@@ -389,32 +391,54 @@ if(empty($_SESSION['lg'])) {
                                                 <div id="marca-veiculo-area"> 
                                                     <label for="cidade">Marca do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
+<<<<<<< HEAD
                                                         <select class="form-control" id="marca_veiculo" name="marca_veiculo" aria-label="Default select example">
                                                             
                                                          </select>    
+=======
+                                                        <select class="form-control" id="fabricante_veiculo"  name="fabricante_veiculo" >
+                                                            <option value="resultado" >Selecionar</option>
+                                                         </select>   
+>>>>>>> 56c1b387fbbe4a8339ab4f5917bafc78ae8134bc
                                                          <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
+                                                    
                                                 </div>
+<<<<<<< HEAD
+=======
+                                                
+>>>>>>> 56c1b387fbbe4a8339ab4f5917bafc78ae8134bc
                                               </div>  
                                     </div>
+
+                                                            
+
 
                                  <!--Fim da coluna-->           
                                   </div>
 
-                                  
+                                   
+
                                     <!--Fechamento da linha--> 
                                      </div>
 
                                    <!--Início da linha-->     
                                    <div class="row">
 
-                                             <!--Início da coluna-->         
+                                             
+
+                                            <!--Início da coluna-->         
                                              <div class=" col-md-4">
+
 
                                                <div class="form-group">
                                                     <div class="   col"  id="modelo-veiculo-area">
                                                         <label for="">Modelo do Veículo</label>
                                                         <span class="campo-obrigatorio">*</span>
+<<<<<<< HEAD
                                                             <select class="form-control" id="modelo_veiculo" name="modelo_veiculo" aria-label="Default select example">
+=======
+                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo"  aria-label="Default select example">
+>>>>>>> 56c1b387fbbe4a8339ab4f5917bafc78ae8134bc
                                                                 
                                                              </select>    
                                                     </div>
@@ -424,22 +448,27 @@ if(empty($_SESSION['lg'])) {
                                             <!--Fim da coluna-->             
                                             </div>
 
-                                                    <!--Início da coluna-->   
-                                                     <div class="marcador1 col-md-4">
+                                                     <!--Início da coluna-->         
+                                             <div class=" col-md-4">
 
-                                                      <div class="form-group">
-                                                            <div class="   col">
-                                                                <label > Ano de Fabricação</label>
-                                                                <span class="campo-obrigatorio"></span>
-                                                                <input type="date" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Nascimento"  autocomplete="off"  >    
-                                                            </div>
-                                                        </div>
+                                                
 
-                                        <!--Fim da coluna-->       
-                                         </div>
+                                                    <div id="fabricante-area"  >
+                                                    <!--Campo invisivel para coletar as informações do veiculo do arquivo JS e enviar para o insert_veiculo-->
+                                                         <label for="cidade">Confirmar Marca Veículo</label>
+                                                         <span class="campo-obrigatorio"></span>
+                                                         <select  class="form-control" id="fabricante"  name="fabricante" required="" >
+                                                            <option value="fabricante_veiculo" value="fabricante">Selecionar</option>
+                                                         </select>      
+                                            
+                                                      </div>
+
+                                                  <!--Fim da coluna-->           
+                                                    </div> 
+
 
                                                  <!--Início da coluna-->       
-                                                   <div class="col-md-4">
+                                                   <div class="col-md-2">
                                                          <div class="col">
                                                                         <label for="cidade">Cor do Veículo</label>
                                                                         <span class="campo-obrigatorio"></span>
@@ -451,7 +480,21 @@ if(empty($_SESSION['lg'])) {
 
                                             <!--Fim da coluna-->            
                                              </div>
-                                                                    
+                                                          
+
+                                             <!--Início da coluna-->   
+                                                     <div class="marcador1 col-md-2">
+
+                                                      <div class="form-group">
+                                                            <div class="   col">
+                                                                <label > Ano de Fabricação</label>
+                                                                <span class="campo-obrigatorio"></span>
+                                                                <input type="text" name="ano_fabricacao_veiculo" id="ano_fabricacao_veiculo" class="form-control" placeholder="Ano"  autocomplete="off"  >    
+                                                            </div>
+                                                        </div>
+
+                                        <!--Fim da coluna-->       
+                                         </div>              
 
 
                          <!--Fechamento da linha-->  
@@ -536,9 +579,28 @@ if(empty($_SESSION['lg'])) {
 /* valida informações dos veiculos*/
 
 <script type="text/javascript">
-    
+   
 
-    
+    $('#fabricante_veiculo').keyup(function(){
+    $('#fabricante3').val($(this).val());
+    });
+
+
+
 
 
 </script>
+
+
+<!--
+
+ <script type="text/javascript">
+              
+                    $('#fabricante_veiculo').keyup(function(){
+                    $('#fabricante').val($(this).val());
+                    });
+
+
+           </script>
+
+-->           

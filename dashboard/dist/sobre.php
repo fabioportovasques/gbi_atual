@@ -3,7 +3,7 @@ session_start();
 require '../../config.php';
 
 if(empty($_SESSION['lg'])) {
-   header("Location: ../../index.php");
+    header("Location: ../../index.php");
     exit;
 }
 
@@ -12,37 +12,43 @@ if(empty($_SESSION['lg'])) {
 
     <!DOCTYPE html>
 <html lang="en">
- <meta charset="utf-8" />
-         <link rel="icon" type="image/png" href="img/oleo.png">
+    <head>
+        <meta charset="utf-8" >
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+         <link rel="icon" type="image/png" href="img/oleo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cad Veículo</title>
+        <title>Cadastrto de Funcionários</title>
+       
         
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/cons_veiculo.js"></script>
-        
-         <script type="text/javascript" src="js/cad-veiculo.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
         <link href="css/styles.css" rel="stylesheet"/>
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-         <!--javascript para API IBGE Valida cep-->
+
+        
+                <!--Link para icones-->
+
+                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+                 <!--javascript para API IBGE Valida cep-->
         <script type="text/javascript" src="./js/validaCep.js"></script>
             <!--javascript para validar CPF/CNPJ-->
          <script type="text/javascript" src="./js/validaCpfCnpj.js"></script>
            <!--javascript para mascara  CPF/CNPJ-->
          <script src="https://unpkg.com/imask"></script>
+          <!--javascript para mascara telefone-->
+       <script type="text/javascript" src="./js/masTelefone.js"></script>
 
-         <!--multiplos submit-->
+
+          <!--multiplos submit-->
               <script type="text/javascript">
-                function selecionaAction(script){
-                    document.actionJava.action = script + '.php';
-                    document.actionJava.submit();
-                }
-
+                    function selecionaAction(script){
+                        document.actionJava.action = script + '.php';
+                        document.actionJava.submit();
+                    }
            </script>
+
 
      <script>
         $(document).ready(function(){
@@ -50,112 +56,48 @@ if(empty($_SESSION['lg'])) {
         });
     </script>   
 
-        <!--Link para icones-->
-       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
-       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
-       <style type="text/css">
+    <style type="text/css">
         
-         /*Aumenta o tamanho dos icones*/
-            i.glyphicon.icones {
-          font-size: 20px
+     body{
+              padding: 20px;
+              margin: 0px;
           }
 
-        .formulario{
+
+
+          .marcador{
              
-            background-color: white;
-            box-shadow: 4px 3px 0px 0px #808080;
-            position: absolute;
-            top: 100px;
-            left: 60px;
-           
-    
-
+             color: #ffffff;
+             font-size: 12px;
           }
 
-          .input {
-            width: 300px;
-            position: absolute;
-            left: 25px;
+          .marcador-container1{
+             
+            
 
-          }
-
-
-          .bot {
-            width: 140px;
-            position: absolute;
-            left: 20px;
-            margin: 5px;
-            padding:5px;
-
-          }
-
-          body{
-
-               background-color: #FFFFE0;
-          }
-          .menu{
-            color: #ffffff;
-          }
-
-           /*Responsividade para smartphone*/
-
-          
-           @media (max-width: 567px) {
-
-                .input {
-                width: 280px;
-                position: relative;
-                left: 10px;
-                top: -10px;
-              }
-
-              .bot {
               
-                width: 100px;
-                position: absolute;
-                left: 20px;
-                margin: 5px;
-                padding:5px;
-
-                }
-
-            .formulario {
-             
-            }
-
-            .item2 {
-               width: 100px;
-               padding: 0px;
-               margin: 10px;
-            }
-          
-
-            @media (min-width: 567px) {
-
-
-
-                  .formulario {
-                  
-                    width: 20px;
-            }
-             
-              .item2 {
-               width: 100px;
-               padding: 0px;
-               margin: 10px;
-            }
-
-           
-          
-            }
           }
 
-      </style>
+
+          .campo-obrigatorio{
+            font-size: 20px;
+            color: red;
+          }
+
+
+
+             @media (mim-width: 567px) {
+
+                .grafico {
+                width: 80px;
+               
+              } 
+
+    </style>
+
 
     </head>
-<body class="sb-nav-fixed">
- 
+    <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #65AEEE">
             <a class="navbar-brand" href="#">
                 <?php  require 'nome_sistema.php'; ?>
@@ -164,31 +106,26 @@ if(empty($_SESSION['lg'])) {
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             </form>
-            <div class="menu"><?php require 'listar.php';  ?></div>
-
+            <div class="marcador"><?php require 'listar.php';  ?></div>
     <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                       
                        <!--icones -->
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="sair.php">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                                 </svg>
                        &nbsp Trocar Usuário</a>
 
-                        <a class="dropdown-item"   href="/tcc/segware-epi/sobre.php">
+                        <a class="dropdown-item"   href="#.php">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
                         </svg>
                        &nbsp Sobre</a>
 
-                        <a class="dropdown-item" href="#">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-octagon-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM6.57 6.033H5.25C5.22 4.147 6.68 3.5 8.006 3.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H7.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z"/>
-                        </svg>
-                        &nbsp Ajuda</a>
+                        
 
                         
                         <div class="dropdown-divider"></div>
@@ -226,7 +163,7 @@ if(empty($_SESSION['lg'])) {
                                     <a class="nav-link" href="cad-cliente.php">Cadastro Clientes</a>
                                     <a class="nav-link" href="cad-veiculo.php">Cadastro Veiculos</a>
                                     <a class="nav-link" href="cad-troca.php">Troca de Óleo</a>
-                                   
+                                 
                                 </nav>
                             </div>
 
@@ -256,140 +193,69 @@ if(empty($_SESSION['lg'])) {
                                         Veiculos
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-                                     
+                                  
 
                                 </nav>
                            </div>
 
-                         
-
+                          
                             
                     
                 </nav>
-        </div>            
+        </div>
     
 
 
             <!--conteudo do meio -->
 
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4">Trocas de óleo Realizadas</h1>
+           <div class="container-fluid">
+
+            <div class="row">
+
+                    <!-- inicio da coluna -->
+                    <div class="col-md-12">
+
                         <br />
-                              <!--inicio da linha-->
-                              <div class="row">
+                        <br />
+                        <br />
 
-                              
-                                      <!--Início da coluna-->          
-                                      <div class="marcador col-md-12">
+                            <h3 style="position: absolute;left: 50%;top: 100px;">Marca</h3>
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
+                            <p class="font-weight-bold" style="position: absolute;left: 20%;top: 180px;">Quem Somos</p>
 
-                            
+                           
+                              <p class="font-weight-light" style="position: absolute;left: 20%;top: 230px;">Fábio Vasques, Graduando em Análise e Desenvolvinento
+                              de Sistemas, desesnvolvi o mesmo com o intuíto de auxiliar as tarefas do dia a dia do setor de troca de óleo do posto.
+                            com o intuíto de automatizar a troca de óleo.</p>
 
-                                          <?php 
-    require '../../config.php';                
+                            <br />
+                            <br />
+                            <br />
+                            <br />
 
-            $total = 0;
-            $sql = "SELECT COUNT(*) as c FROM servicos";
-            $sql = $pdo->query($sql);
-            $sql = $sql->fetch();
-            $total = $sql['c'];
-            $paginas = $total / 12;
-
-
-
-              $pg = 1;
-              if (isset ($_GET['p']) && !empty($_GET['p'])){    //Se o p estiver setado e não estivere vázio
-                  $pg = addslashes($_GET['p']);
-              }
-
-              $p = ($pg - 1) * 12; //vezes a quantidade de registros por página
-
-            //puxar os registros do banco
-
-                $sql = "select cod_servicos, c.nome_cliente,c.sobrenome_cliente, v.placa_veiculo,v.modelo_veiculo,
-                  s.filtro_combustivel,s.filtro_cabine,s.obs_troca,s.filtro_ar,
-                  s.filtro_oleo,s.proxima_troca,s.data_troca,s.tipo_oleo,s.status_filtro_combustivel,
-                  s.status_filtro_cabine,s.status_filtro_ar,s.status_filtro_oleo,s.km,s.qtd_oleo
-                  FROM servicos s
-                  INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
-                  INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-                   LIMIT $p, 12";
-                   $sql = $pdo->query($sql);
+                            <hr />
+                           <p class="font-weight-bold" style="position: absolute;left: 20%;top: 300px;">Contato</p>
 
 
-                    
-  ?>          
+                           <span style="position: absolute;left: 20%;top: 330px;"><i class="fab fa-whatsapp"></i>53999367651</span>
 
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-       
-                  
-          <!--<table class="table-borded table-hover">-->
-      <div class="table-responsive-sm">  
-         <table class="table">    
-            <thead class="thead-light">
-              <tr>
-                <th>Nome</hd>
-                <th>Sobrenome</th>
-                <th>placa do veículo</th>
-                <th>proxima troca </th>
-              </tr>
-            </thead>
-              <?php 
-                  if ($sql->rowCount() > 0){
-                                   foreach ($sql->fetchAll() as $item) {
-                        ?>  
-            <tbody>
-              
-                <tr>
-                  <td><?php echo $item['nome_cliente'];  ?></td>
-                  <td><?php echo $item['sobrenome_cliente'];  ?></td>
-                  <td><?php echo $item['placa_veiculo'];  ?></td>
-                  <td><?php echo $item['proxima_troca'];  ?></td>
-                </tr>
-              <?php } } ?>
-            </tbody>
-          </table>
 
-          
-      <nav aria-label="Navegação de página exemplo">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Anterior">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Anterior</span>
-            </a>
-          </li>
-          <?php 
-          for ($q=0; $q <$paginas; $q++) {  
-        ?>
-                    
-          <li class="page-item"><a class="page-link" href="trocas-realizadas.php?p=<?php echo $q+1; ?>"><?php echo $q+1;  ?></a></li>
-          <?php }?>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Próximo">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Próximo</span>
-            </a>
+                         <span style="position: absolute;left: 20%;top: 400px;"><img width="100px" src="./img/eu.jpeg"></span>
 
 
-          </li>
-        </ul>
-      </nav>
+
+                     <!-- Fim da coluna -->   
+                     </div>   
+                
+            </div> 
 
 
-      </div>
-    </div>
-  </div>
-  </div>
+           </div>
 
-
-                                      </div>
-                              </div>
-                    </div>                      
 
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

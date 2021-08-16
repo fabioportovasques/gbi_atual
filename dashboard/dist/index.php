@@ -13,7 +13,7 @@ if(empty($_SESSION['lg'])) {
     <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8" >
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
          <link rel="icon" type="image/png" href="img/oleo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -85,6 +85,14 @@ if(empty($_SESSION['lg'])) {
           }
 
 
+
+             @media (mim-width: 567px) {
+
+                .grafico {
+                width: 80px;
+               
+              } 
+
     </style>
 
 
@@ -105,23 +113,14 @@ if(empty($_SESSION['lg'])) {
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                       
                        <!--icones -->
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="sair.php">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                                 </svg>
                        &nbsp Trocar Usuário</a>
 
-                        <a class="dropdown-item"   href="/tcc/segware-epi/sobre.php">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                        </svg>
-                       &nbsp Sobre</a>
-
-                        <a class="dropdown-item" href="#">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-octagon-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM6.57 6.033H5.25C5.22 4.147 6.68 3.5 8.006 3.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H7.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z"/>
-                        </svg>
-                        &nbsp Ajuda</a>
+                   
+                        
 
                         
                         <div class="dropdown-divider"></div>
@@ -287,12 +286,12 @@ if(empty($_SESSION['lg'])) {
 
                         <div class="row">
                             
-                             <div class="col-xl-4 col-md-4">
-                                <div class="card bg-success  text-white mb-4">
+                             <div class="col-xl-4 col-md-4" >
+                                <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body">Troca de Óleo realizadas</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="trocas-realizadas.php">
+                                    <div class="card-body "style="color:black;background-color:#3CB371;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo realizadas</div>
+                                    <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
+                                        <a class=""style="color:white; text-decoration:none;" href="trocas-realizadas.php">
 
                                           <?php 
 
@@ -317,31 +316,41 @@ if(empty($_SESSION['lg'])) {
 
                                           </a>
                                        
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fa fa-check-square-o" aria-hidden="true"></i></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-md-4">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Trocas a Vencer</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="trocas-avencer.php">
-                                          
+                               <div class="col-xl-4 col-md-4" >
+                                <div class="" style="background-color: #40595C";>
+
+                                    <div class="card-body "style="color:black;background-color: #FF8C00;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo a Vencer</div>
+                                    <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
+                                        <a class=""style="color:white; text-decoration:none;" href="trocas-avencer.php">
+
                                    <?php
 
                   
                                       //Contar quantidade de serviços
                                               //require '../../config.php';
                                               $sql = " 
-
-                                           select COUNT(*) AS vencer,
-                                          veiculo_cod_veiculo, v.placa_veiculo,v.tipo_veiculo,v.modelo_veiculo,
-                                          c.nome_cliente,c.sobrenome_cliente,s.proxima_troca
-                                           from servicos s  
-                                          INNER JOIN cliente c on s.cliente_codcliente = c.codcliente
-                                          INNER JOIn veiculo v on s.veiculo_cod_veiculo = cod_veiculo
-                                            where 
-                                            proxima_troca between current_date() AND current_date() + interval 30 day
+                select 
+                     COUNT(*) AS vencer, p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
+                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
+                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
+                        c.telefone1_cliente AS 'telefone1',
+                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
+                    FROM
+                      (SELECT
+                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          cliente_codcliente AS cli, max(proxima_troca) AS pro
+                         FROM
+                          servicos GROUP BY veiculo_cod_veiculo) p
+                        INNER JOIN cliente c
+                        ON p.cli = c.codcliente
+                        INNER JOIN veiculo v
+                        ON p.cod = v.cod_veiculo
+                    WHERE
+                       p.pro BETWEEN CURRENT_DATE AND date_add(CURRENT_DATE , INTERVAL 30 day)
 
                                             ;
 
@@ -360,18 +369,18 @@ if(empty($_SESSION['lg'])) {
                                         </a>
 
                                           
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-bell-slash"></i></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-md-4">
-                                <div class="card bg-danger text-white mb-6">
+                             <div class="col-xl-4 col-md-4" >
+                                <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body">Trocas Vencidas</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="trocas-vencidas.php">
-                                          
-                                      <?php
+                                    <div class="card-body "style="color:black;background-color: #FF4500;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo Vencidas</div>
+                                    <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
+                                        <a class=""style="color:white; text-decoration:none;" href="trocas-vencidas.php">
+                                    
+                                     <?php
 
                                          //Contar quantidade de serviços
                                               //require '../../config.php';
@@ -421,7 +430,7 @@ if(empty($_SESSION['lg'])) {
 
                                         </a>
 
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-exclamation-triangle"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -430,26 +439,16 @@ if(empty($_SESSION['lg'])) {
                       
                        <hr />
                            
-                        <div class="row">
-                            <div class="col-xl-6">
+                        <div class="row grafico">
+                            <div class="col-xl-12">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area mr-1"></i>
-                                       Troca de Óleos Realizadas em carros
+                                       <?php  require 'grafico.php'  ?>
                                     </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar mr-1"></i>
-                                        Troca de Óleos Realizadas em Motos
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
+                           </div>
+                         </div>  
                        
 
 

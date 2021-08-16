@@ -1,5 +1,22 @@
 <?php
 
+/*Debugar*/
+
+/*
+?>
+<pre>
+	<?php
+var_dump($_POST);
+$fabricante =$_POST['fabricante'];
+	?>
+</pre>	
+<?php
+
+*/
+
+
+	
+
 	include 'veiculo.class.php';
 
 	$veiculo = new Veiculo();
@@ -12,12 +29,13 @@
 
 		/*remove a mascara do campo cpf/cnpj para inserir no banco*/
 		
+		
 
 		$placa_veiculo= $_POST['placa_veiculo'];
 		$tipo_veiculo = $_POST['tipo_veiculo'];
 		$cor_veiculo = $_POST['cor_veiculo'];
 		$modelo_veiculo= $_POST['modelo_veiculo'];
-		$fabricante_veiculo = $_POST['fabricante_veiculo'];
+		$fabricante_veiculo = $_POST['fabricante'];
 		$ano_fabricacao_veiculo = $_POST['ano_fabricacao_veiculo'];
 		$km_veiculo = $_POST['km_veiculo'];
 		$obs_veiculo= $_POST['obs_veiculo'];
@@ -40,3 +58,4 @@
 
 	}
 
+	

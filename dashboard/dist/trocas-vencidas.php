@@ -88,15 +88,160 @@ if(empty($_SESSION['lg'])) {
     </style>
 
 
+    <meta charset="utf-8" />
+         <link rel="icon" type="image/png" href="img/oleo.png">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Cad Veículo</title>
+        
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/cons_veiculo.js"></script>
+        
+         <script type="text/javascript" src="js/cad-veiculo.js"></script>
+        <link href="css/styles.css" rel="stylesheet"/>
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+         <!--javascript para API IBGE Valida cep-->
+        <script type="text/javascript" src="./js/validaCep.js"></script>
+            <!--javascript para validar CPF/CNPJ-->
+         <script type="text/javascript" src="./js/validaCpfCnpj.js"></script>
+           <!--javascript para mascara  CPF/CNPJ-->
+         <script src="https://unpkg.com/imask"></script>
+
+         <!--multiplos submit-->
+              <script type="text/javascript">
+                function selecionaAction(script){
+                    document.actionJava.action = script + '.php';
+                    document.actionJava.submit();
+                }
+
+           </script>
+
+     <script>
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>   
+
+        <!--Link para icones-->
+       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+       <style type="text/css">
+        
+         /*Aumenta o tamanho dos icones*/
+            i.glyphicon.icones {
+          font-size: 20px
+          }
+
+        .formulario{
+             
+            background-color: white;
+            box-shadow: 4px 3px 0px 0px #808080;
+            position: absolute;
+            top: 100px;
+            left: 60px;
+           
+    
+
+          }
+
+          .input {
+            width: 300px;
+            position: absolute;
+            left: 25px;
+
+          }
+
+
+          .bot {
+            width: 140px;
+            position: absolute;
+            left: 20px;
+            margin: 5px;
+            padding:5px;
+
+          }
+
+          body{
+
+               background-color: #FFFFE0;
+          }
+          .menu{
+            color: #ffffff;
+          }
+
+           /*Responsividade para smartphone*/
+
+          
+           @media (max-width: 567px) {
+
+                .input {
+                width: 280px;
+                position: relative;
+                left: 10px;
+                top: -10px;
+              }
+
+              .bot {
+              
+                width: 100px;
+                position: absolute;
+                left: 20px;
+                margin: 5px;
+                padding:5px;
+
+                }
+
+            .formulario {
+             
+            }
+
+            .item2 {
+               width: 100px;
+               padding: 0px;
+               margin: 10px;
+            }
+          
+
+            @media (min-width: 567px) {
+
+
+
+                  .formulario {
+                  
+                    width: 20px;
+            }
+             
+              .item2 {
+               width: 100px;
+               padding: 0px;
+               margin: 10px;
+            }
+
+           
+          
+            }
+          }
+
+      </style>
+
     </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #343363">
-            <a class="navbar-brand" href="#">GBI Troca Óleo</a>
+<body class="sb-nav-fixed">
+ 
+        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #65AEEE">
+            <a class="navbar-brand" href="#">
+                <?php  require 'nome_sistema.php'; ?>
+            </a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             </form>
-            <div class="marcador"><?php require 'listar.php';  ?></div>
+            <div class="menu"><?php require 'listar.php';  ?></div>
+
     <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -136,7 +281,7 @@ if(empty($_SESSION['lg'])) {
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #343363" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #65AEEE" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             
@@ -157,7 +302,7 @@ if(empty($_SESSION['lg'])) {
                                     <a class="nav-link" href="cad-cliente.php">Cadastro Clientes</a>
                                     <a class="nav-link" href="cad-veiculo.php">Cadastro Veiculos</a>
                                     <a class="nav-link" href="cad-troca.php">Troca de Óleo</a>
-                                 
+                                   
                                 </nav>
                             </div>
 
@@ -187,18 +332,17 @@ if(empty($_SESSION['lg'])) {
                                         Veiculos
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-                                  
+                                     
 
                                 </nav>
                            </div>
 
-                          
+                         
+
                             
                     
                 </nav>
-        </div>
-    
-
+        </div>            
 
             <!--conteudo do meio -->
 
@@ -253,22 +397,27 @@ if(empty($_SESSION['lg'])) {
 
             */
 
+                   
+
                    $sql ="
+                   
+                        
+                       
                    
                         /*
                         Funcionando, retorna as datas vencidas que 
                         são menores que hoje e que não possuem data de troca superior
                        */
                        
-                       SELECT
+                       select 
                       p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
                         v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
                         c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
-                        c.telefone1_cliente AS 'telefone1',
+                        c.telefone1_cliente AS 'telefone1',data_troca,
                         p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
                     FROM
                       (SELECT
-                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
+                          veiculo_cod_veiculo AS cod,data_troca, filtro_combustivel AS fil,
                           cliente_codcliente AS cli, max(proxima_troca) AS pro
                          FROM
                           servicos GROUP BY veiculo_cod_veiculo) p
@@ -292,16 +441,17 @@ if(empty($_SESSION['lg'])) {
           <!--<table class="table-borded table-hover">-->
       <div class="table-responsive-sm">  
          <table class="table">    
-          <form action="cad-troca2.php" method="POST" name="teste"> 
+          <form action="editar.php" method="POST" name="teste"> 
             <thead class="thead-light">
               <tr>
                  
                 <th>Nome</hd>
                 <th>Sobrenome</th>
-                <th>placa do veículo</th>
-                <th>proxima troca </th>
+                <th>Placa do veículo</th>
+                <th>Data troca </th>
+                <th>Proxima troca </th>
                 <th>Telefone </th>
-                <th>Filtro de combustivel </th>
+                             
                  <th colspan="2" align="center">Ações </th>
               </tr>
             </thead>
@@ -329,7 +479,13 @@ if(empty($_SESSION['lg'])) {
                      <input class="form-itens" type="hidden" name="placa_veiculo" value="
                       <?php echo $item['placa'];  ?>" >
                       <?php echo $item['placa'];  ?> 
+                  </td>
                   <td>
+                    <?php 
+                         echo date('d/m/Y', strtotime($item['data_troca'])); 
+                      ?>
+                  </td>
+                     <td>
                     <?php 
                        echo date('d/m/Y', strtotime($item['proxima_troca']));
                       ?>
@@ -343,15 +499,17 @@ if(empty($_SESSION['lg'])) {
                   <td>
                     <input class="form-itens" type="hidden" name="telefone1_cliente" value="
                       <?php echo $item['telefone1'];  ?>" >
-                      <?php echo $item['filtro_combustivel'];  ?>                      
+                                         
                   </td> 
                   <!--<td data-toggle="tooltip"  title="Troca óleo Agora"><i class="glyphicon glyphicon-tint icones" onblur="validar(getElementById('cpf_cnpj').value)" >  </i></td>-->
-                <td><button type="submit" name="pesquisar_placa" value="pesquisar" class="btn "  data-toggle="tooltip"  title="Trocar óleo Agora?"><img src= "img/oleo-de-carro.png" width="25px" style="color:red;"></i> </button></td>                  
+                <td><!--<button type="submit" name="pesquisar_placa" value="<?php  $item ['cod_veiculo'];    ?>" class="btn "  data-toggle="tooltip"  title="Trocar óleo Agora?"><img src= "img/oleo-de-carro.png" width="25px" style="color:red;"></i> </button>-->
+               <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
+                </td>                  
                 <!--<td><input type="submit" name=""   value="Troca Óleo"  ></td>-->
 
-                <td onClick="this.parentNode.remove();">
+               <!-- <td onClick="this.parentNode.remove();">
                   <button type="submit" name="" value="pesquisar" class="btn "  data-toggle="tooltip"  title="Excluir Item"><i class="glyphicon glyphicon-trash icones" style="color:red;"></i>
-                </td>
+                </td>-->
                 <!--<td><a href="cad-troca2.php?veiculo_cod_veiculo=<?php print $item['veiculo_cod_veiculo']; ?>">Avaliar</a></td>-->                 
 
                 </tr>

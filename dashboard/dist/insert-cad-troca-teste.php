@@ -21,15 +21,7 @@
 
 			//Se for campos for vazio então dispara a mensagem
 
-			if (empty($_POST['cpf_cliente']) ) {
-
-				print '<div class="alert alert-warning" role="alert">
-						  Favor preencher o campo com o CPF/CNPJ do cliente
-						</div>';
-				print '<script>window.setTimeout(function(){window.location=\'index.php\';}, 5000);</script>';
-
-
-			}
+			
 
 			if (empty($_POST['filtro_oleo']) ) {
 

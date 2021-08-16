@@ -228,7 +228,7 @@ class Veiculo {
  							} else {
  								
  								$sql= "select  c.nome_cliente,c.sobrenome_cliente,c.cpf_cliente, v.tipo_veiculo,v.cor_veiculo, v.fabricante_veiculo,
- 								 v.modelo_veiculo,v.placa_veiculo,v.cliente_codcliente
+ 								 v.modelo_veiculo,v.placa_veiculo,ano_fabricacao_veiculo,v.cliente_codcliente
 									FROM cliente AS c
 									JOIN veiculo AS v ON c.codcliente = v.cliente_codcliente
  								 WHERE placa_veiculo like  '".$_POST['placa_veiculo']."' ";

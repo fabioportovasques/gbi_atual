@@ -1,41 +1,44 @@
-<?php
-session_start();
-require '../../config.php';
-if(empty($_SESSION['lg'])) {
-    header("Location: ../../index.php");
-    exit; 
-}   
 
-                    require 'troca.class.php';
 
-                    $troca = new Troca();
 
-                   $lista = $troca->PesquisarCpfCliente();
-                      foreach ($lista as $item):
-                      
-                ?>
+	<?php   
 
-                <?php endforeach;  ?>
+  $cod_veiculo  = $_GET['cod_veiculo'];
 
-               
+  include 'classe/Troca.class.php';
 
-<!DOCTYPE html>
+  //Instanciando a class
+
+  $troca = new Troca();
+  $info = $troca->getInfo($cod_veiculo);
+
+
+  
+
+?>
+
+    <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+          <link rel="icon" type="image/png" href="img/oleo.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Add Troca de Óleo</title>
-        <link rel="stylesheet" href="css/style.css">
+
+
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
         <link href="css/styles.css" rel="stylesheet"/>
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!--cria input dinamico-->
-       <script type="text/javascript" src="./js/filroOleo.js"></script>
-        <script type="text/javascript" src="./js/filtroCombustivel.js"></script>
+
+        
+                <!--Link para icones-->
+
+                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
 
                  <!--javascript para validar CPF/CNPJ-->
          <script type="text/javascript" src="./js/validaCpfCnpj.js"></script>
@@ -65,9 +68,7 @@ if(empty($_SESSION['lg'])) {
         });
     </script>   
 
-        <!--Link para icones-->
-       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
-       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+      
 
           <style type="text/css">
         
@@ -76,9 +77,6 @@ if(empty($_SESSION['lg'])) {
           font-size: 20px;
           }
 
-          .input{
-            text-align: left;
-          }
 
          .formulario{
              
@@ -87,12 +85,23 @@ if(empty($_SESSION['lg'])) {
             position: absolute;
             top: 100px;
             left: 60px;
-            bottom: -890px;
+           
 
+          }
+
+          .radio {
+            margin-right: 5px;
+            padding-left: 3px;
+          }
+
+          .pesq{
+            position: relative;
+            top: 25x;
+            left: 10px;
           }
           body{
 
-               background-color: #FFFFE0;
+               background-color: ;
           }
           .menu{
             color: #ffffff;
@@ -103,7 +112,7 @@ if(empty($_SESSION['lg'])) {
            @media (max-width: 566px) {
 
             .formulario {
-              bottom: -800px; 
+              
             }
 
             .item2 {
@@ -111,16 +120,12 @@ if(empty($_SESSION['lg'])) {
                padding: 0px;
                margin: 0px;
             }
-
-            .input{
-              text-align: left;
-            }
            
 
             @media (min-width: 567px) {
 
                   .formulario {
-                    bottom: -800px; 
+                            
             }
 
             .item2 {
@@ -130,14 +135,18 @@ if(empty($_SESSION['lg'])) {
             }
           
 
-            }
-
-            .input{
-              text-align: left;
-            }
+        
           }
 
       </style>
+
+      <script type="text/javascript">
+
+        $(function(){
+            $('a[href="dados_veiculo"]').tab('show');
+        });
+
+      </script>
 
 
 
@@ -147,8 +156,10 @@ if(empty($_SESSION['lg'])) {
 
       
 
-        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #343363">
-            <a class="navbar-brand" href="#">Add Troca de Óleo</a>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #65AEEE">
+            <a class="navbar-brand" href="#">
+                <?php  require 'nome_sistema.php'; ?>                    
+            </a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -195,7 +206,7 @@ if(empty($_SESSION['lg'])) {
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #343363" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #65AEEE" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             
@@ -255,127 +266,119 @@ if(empty($_SESSION['lg'])) {
                             
                     
                 </nav>
-        </div>            <!--conteudo do meio -->
+        </div>            
 
+        <!--conteudo do meio -->
 
          <!--Início container-->
            
    <div class="container formulario">
 
 
-<?php   
 
-     $conexao = new PDO("mysql:host=localhost;dbname=db-gbi","root","F@bio102030");
-      $select = $conexao->prepare("
+     <!--DEbugar
 
-                  select 
-                      p.cod AS 'cod_veiculo', v.placa_veiculo AS 'placa',
-                        v.tipo_veiculo AS 'tipo', v.modelo_veiculo AS 'modelo',
-                        c.nome_cliente AS 'nome', c.sobrenome_cliente AS 'sobrenome',
-                        c.telefone1_cliente AS 'telefone1',
-                        p.fil AS 'filtro_combustivel', p.pro AS 'proxima_troca'
-                    FROM
-                      (SELECT
-                          veiculo_cod_veiculo AS cod, filtro_combustivel AS fil,
-                          cliente_codcliente AS cli, max(proxima_troca) AS pro
-                         FROM
-                          servicos GROUP BY veiculo_cod_veiculo) p
-                        INNER JOIN cliente c
-                        ON p.cli = c.codcliente
-                        INNER JOIN veiculo v
-                        ON p.cod = v.cod_veiculo
-                    WHERE
-                      p.pro < CURRENT_DATE
+	<label>Filtro combústivel</label>
+	<input type="" name="" value="<?php  echo $info['cod_veiculo']  ; ?>">
 
-        ");
-      $select ->execute();
-      $fetchAll = $select->fetchAll();
+ 
+  <label>Filtro combústivel</label>
+  <input type="" name="" value="<?php echo $info['obs_troca']; ?>">
 
+    <label>Nome Cliente</label>
+  <input type="" name="" value="<?php  echo $info['nome']  ; ?>">
 
-
-?>
-
-
-<?php 
-
-    foreach ($fetchAll AS $item) {
-
-        ?>
-
-        <input type="" name="" value="<?php  echo $item['filtro_combustivel'] ; ?>" >
-
-        <?php 
-    }
-
-    ?>
-
-    
-                        <h2 class="text-center">Dados Da Troca</h2><br />
+-->
+  
+   <h2 class="text-center">Dados Da Troca</h2><br />
                                            <hr />
 
                        <!--Início da linha-->    
                   <div class="row">
-                                                   
+                                                 
 
                                         <!--Início da coluna-->  
                                         <div class="marcador1 col-md-4">
 
                                                  <div class="form-group">
-                                                    <form action=""  method="POST" name="actionJava">
-                                                      <div class="col">
-                                                        
-                                                              
+                                                             <div class="form-group">
+                                                                  <div class="col"><form action=""  method="POST" name="actionJava"  > 
 
-                                                               
+                                                                      <label>Filtro de Cabine</label>
+                                                                        <span class="campo-obrigatorio"></span>
+                                                                        <div class="input-group">
+                                                                              <div class="input-group-prepend">
+                                                                                <div class="input-group-text"> 
 
-                                                                  <label> Filtro de Combustível</label>
-                                                                    <span class="campo-obrigatorio"></span>
-                                                                    <input type="text" name="filtro_combustivel" class="form-control" value="<?php echo $fetchAll['filtro_combustivel']; ?>" style="text-align: left;" >  <br />
-                                                                    <label>Trocado?</label><br />
+                                                                                     <?php if ($info['status_filtro_cabine']==nao) {
+                                                                                              ?>
 
-                                                                
+                                                                                              <input type="radio" class="form-control" value="nao" name="status_filtro_cabine" checked="nao">NAO
+                                                                                              <input type="radio" value="sim" name="status_filtro_cabine">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_cabine" value="sim" checked="sim">SIM 
+                                                                                              <input type="radio" value="nao" name="status_filtro_cabine">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?>
 
-                                                                      <?php if ($status_filtro_combustivel=['sim']) {
+                                                                                </div>
+                                                                              </div>                                                                              
+                                                                              <input type="text" class="form-control" name="filtro_cabine" id="filtro_combustivel" value="<?php echo $info['filtro_cabine']; ?>" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" aria-label="Input text com botão radio">
 
-                                                                        ?><input type="radio" name="status_filtro_combustivel" checked="sim">sim 
-                                                                        <input type="radio" name="status_filtro_combustivel">Não<?php 
-                                                                      }else {
-                                                                        ?><input type="radio" name="status_filtro_combustivel" checked="nao">nao
-                                                                        <input type="radio" name="status_filtro_combustivel">Não<?php 
-                                                                      }
+                                                                            </div>
 
-                                                                  ?>
-                
-                                                        </div>                
-                                                  </div>                            
+                                                                  
+                                                                 </div>
+                                                              </div>
+                                                    </div>
+                                                                    
 
                                          <!--Fim da coluna-->      
                                           </div>
 
-
-
                                          <!--Início da coluna-->  
                                           <div class="marcador1 col-md-4">
-                                            <div class="form-group">
-                                                <div class="col">
-                                                    <label> Filtro de Cabine</label>
-                                                        <span class="campo-obrigatorio"></span>
-                                                          <input type="text" name="filtro_cabine" class="form-control" value="<?php echo $filtro_cabine ?>" >  <br />
+                                         
+                                              <div class="form-group">
+                                                             <div class="form-group">
+                                                                  <div class="col">
+                                                                      <label>Filtro de Combustível</label>
+                                                                        <span class="campo-obrigatorio"></span>
+                                                                        <div class="input-group">
+                                                                              <div class="input-group-prepend">
+                                                                                 <div class="input-group-text">
+                                                                                  <?php if ($info['status_filtro_combustivel']==nao) {
+                                                                                              ?>
 
-                                                        <label>Trocado?</label><br />
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="nao" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="sim">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="sim" checked="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_combustivel" value="nao">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?>
 
-                                                   <?php if ($status_filtro_cabine= $POST['sim']) {
-                                                      ?><input type="radio" name="status_filtro_cabine" checked="sim">sim 
-                                                      <input type="radio" name="status_filtro_cabine">Não<?php 
-                                                    }else {
-                                                      ?><input type="radio" name="status_filtro_cabine" checked="nao">Nao
-                                                      <input type="radio" name="status_filtro_cabine">Sim<?php 
-                                                    }
 
-                                                  ?>
 
-                                                </div>  
-                                             </div>                     
+                                                                                </div>
+                                                                              </div>
+                                                                              <input type="text" class="form-control" name="filtro_combustivel" value="<?php echo $info['filtro_combustivel']; ?>" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" id="filtro_combustivel" aria-label="Input text com botão radio">
+
+                                                                            </div>
+
+                                                                  
+                                                                 </div>
+                                                              </div>
+                                                    </div>
+                                                  
+
+
                                         <!--Fim da coluna-->       
                                          </div>
 
@@ -383,30 +386,42 @@ if(empty($_SESSION['lg'])) {
                                           <!--Início da coluna-->   
                                            <div class="marcador1 col-md-4">
 
-                                                  <div class="form-group">
+                                                 <div class="form-group">
                                                              <div class="form-group">
                                                                   <div class="col">
                                                                       <label>Filtro de Ar</label>
-                                                                      <span class="campo-obrigatorio"></span>
-                                                                      <input type="text" name="filtro_ar" id="filtro_ar" class="form-control" value="<?php echo $filtro_ar ?>" ><br />
-                                                                      <label>Trocado?</label><br />
+                                                                        <span class="campo-obrigatorio"></span>
+                                                                        <div class="input-group">
+                                                                              <div class="input-group-prepend">
+                                                                                <div class="input-group-text">
+                                                                                    
+                                                                                     <?php if ($info['status_filtro_ar']==nao) {
+                                                                                              ?>
+
+                                                                                              <input type="radio" name="status_filtro_ar" value="nao" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_ar" value="sim">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_ar" checked="sim" value="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_ar" value="nao">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?> 
 
 
-                                                            
-                                                                      <?php if ($status_filtro_ar = ["sim"]) {
-                                                                          ?><input type="radio" name="status_filtro_ar" checked="sim">sim 
-                                                                          <input type="radio" name="status_filtro_ar">Não<?php 
-                                                                        }else {
-                                                                          ?><input type="radio" name="status_filtro_ar" checked="nao">Nao
-                                                                          <input type="radio" name="status_filtro_ar">Sim<?php 
-                                                                        }
+                                                                                </div>
+                                                                              </div>
+                                                                              <input type="text" class="form-control" name="filtro_ar" id="filtro_ar" value="<?php echo $info['filtro_ar']; ?>" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" aria-label="Input text com botão radio">
 
-                                                                   ?>
+                                                                            </div>
 
+                                                                  
                                                                  </div>
                                                               </div>
                                                     </div>
-                                                  <hr /> 
+                                                  
+                                                  
                                               <!--Fim da coluna-->        
                                             </div>
                                                                            
@@ -422,36 +437,42 @@ if(empty($_SESSION['lg'])) {
 
                                         <!--Início da coluna-->    
                                          <div class="marcador1 col-md-4">
-                                                           <div class="form-group">
-                                                                    <div class="col">
-                                                                        <label>Filtro de óleo</label>
-                                                                        <span class="campo-obrigatorio"></span>
-                                                                        <input type="text" name="filtro_oleo" id="filtro_oleo" class="form-control" value="<?php echo $filtro_oleo ?>"><br />
-                                                                        <label>Trocado?</label><br />
-                                                                      
 
-                                                                  <?php
+                                                            <div class="form-group">
+                                                             <div class="form-group">
+                                                                  <div class="col">
+                                                                      <label>Filtro de Óleo</label>
+                                                                        <span class="campo-obrigatorio"></span>
+                                                                        <div class="input-group">
+                                                                              <div class="input-group-prepend">
+                                                                                <div class="input-group-text">
+                                                                                     
+                                                                                      <?php if ($info['status_filtro_oleo']==nao) {
+                                                                                              ?>
+
+                                                                                              <input type="radio" name="status_filtro_oleo" checked="nao" value="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_oleo" value="sim">SIM <?php 
+                                                                                            }else {
+                                                                                              ?>
+                                                                                              <input type="radio" name="status_filtro_oleo" checked="sim" value="sim">SIM 
+                                                                                              <input type="radio" name="status_filtro_oleo" value="nao">NAO<?php 
+                                                                                             
+                                                                                            }
+                                                                                              
+                                                                                         ?> 
+
+
+                                                                                </div>
+                                                                              </div>
+                                                                              <input type="text" class="form-control" name="filtro_oleo" id="filtro_oleo" value="<?php echo $info['filtro_oleo']; ?>" data-toggle="tooltip" data-placement="top" title="Se trocou o filtro,favor marcar a opção ao lado" aria-label="Input text com botão radio">
+
+                                                                            </div>
 
                                                                   
-
-                                                                    //echo $status_filtro_oleo . "<br />";
-
-                                                                    if ($status_filtro_oleo != 'sim' ) {                                                                     
-                                                                      echo  "nao";
-                                                                     } else if ($status_filtro_oleo != 'nao' )  {
-                                                                      echo 'sim';
-                                                                    }
-
-            
-          
-                                                                    ?>
-
-                
-                                                                      
-
-                                                                    </div>
-                                                                
-                                                          </div>
+                                                                 </div>
+                                                              </div>
+                                                    </div>
+                                                   
 
                                          <!--Fim da coluna-->       
                                         </div>
@@ -463,7 +484,7 @@ if(empty($_SESSION['lg'])) {
                                                                 <div class="col">
                                                                         <label>Tipo de óleo</label>
                                                                         <span class="campo-obrigatorio"></span>
-                                                                        <input type="text" name="tipo_oleo" id="tipo_oleo" class="form-control"  value="<?php  echo $tipo_oleo ?>">
+                                                                        <input type="text" name="tipo_oleo" id="tipo_oleo" value="<?php echo $info['tipo_oleo']; ?>" class="form-control">
                                                                         
                                                                   </div>          
                                                                    
@@ -480,7 +501,14 @@ if(empty($_SESSION['lg'])) {
                                                                     <div class="col">
                                                                         <label>Quantidade de óleo</label>
                                                                         <span class="campo-obrigatorio"></span>
-                                                                        <input type="text" name="qtd_oleo" class="form-control" value="<?php  echo $qtd_oleo ?>">
+                                                                        <input type="number" name="qtd_oleo" value="<?php echo $info['qtd_oleo']; ?>" class="form-control">
+                                                                        <!--campo hidden para salvar na tabela (proxima_troca) chave estrangeira servicos_cod_servicos -->
+                                                                       <input type="hidden" name="servicos_cod_servicos" value="<?php echo $info['cod_servicos'] ; ?>">
+                                                                        <input type="hidden" name="cliente_codcliente" value="<?php echo $info['codcliente'] ; ?>">
+                                                                        <input type="hidden" name="veiculo_cod_veiculo" value="<?php echo $info['cod_veiculo'] ; ?>">
+
+
+
                                                                     </div>
 
                                                              </div>
@@ -507,7 +535,7 @@ if(empty($_SESSION['lg'])) {
                                                                     <div class="col">
                                                                         <label>KM Atual</label>
                                                                         <span class="campo-obrigatorio"></span>
-                                                                        <input type="text" name="km" id="km" class="form-control" value="<?php  echo $km ?>">
+                                                                        <input type="number" name="km" id="km" value="<?php echo $info['km']; ?>" class="form-control">
                                                                     </div>
                                                                 
                                                           </div>
@@ -521,7 +549,7 @@ if(empty($_SESSION['lg'])) {
                                                                     <div class="col">
                                                                         <label > Data da Troca</label>
                                                                         <span class="campo-obrigatorio">*</span>
-                                                                        <input type="date" name="data_troca" id="data_troca" class="form-control"   >    
+                                                                        <input type="date" name="data_troca" id="data_troca" value="<?php echo $info['data_troca'];  ?>" class="form-control"  >    
 
                                                                     </div>
                                                          </div>
@@ -542,7 +570,7 @@ if(empty($_SESSION['lg'])) {
                                                                    <label >6 Meses</label> 
                                                                   <input class="form-comtrol" type="radio" name="proxima_troca" id="proxima_troca" value="6" >    
                                                                 -->
-                                                                <input type="date" name="proxima_troca" class="form-control">
+                                                                <input type="date" name="proxima_troca" value="<?php echo $info['proxima_troca'];  ?>"  class="form-control">
                                                               </div>
                                                         </div>
 
@@ -558,24 +586,41 @@ if(empty($_SESSION['lg'])) {
                        <div class="row">
 
                                   <!--Início da coluna-->   
-                                  <div class="marcador1 col-md-12">
+                                  <div class="marcador1 col-md-4">
 
                                           <div class="form-group">
-                                                
+                                              
                                                       <div class="   col">
                                                           <label > Observação</label>
-                                                          <textarea id="obs_troca" name = "obs_troca" class="md-textarea form-control" rows="3" data-toggle="tooltip" data-placement="top" title="OBS sobre o veículo"> <?php  echo $obs_troca ?> </textarea>
-
-                                                         
+                                                          <input type="" name="obs_troca" class="form-control" value="<?php  echo $info['obs_troca'];  ?>">
+                                                          <input type="hidden" name="Atual">
                                                       </div>
                                                 
                                            </div>
 
 
-                                                       
+                                                        
                                   <!--Fim da coluna-->      
                                   </div>
 
+                                    <!--Início da coluna-->   
+                                  <div class="marcador1 col-md-4">
+
+                                          <div class="form-group">
+                                              
+                                                      <div class="   col">
+                                                          <label > Placa</label>
+                                                          <input type="" name="" class="form-control" value="<?php  echo $info['placa'];  ?>">                                                         
+                                                      </div>
+                                                
+                                           </div>
+
+
+                                                        
+                                  <!--Fim da coluna-->      
+                                  </div>
+
+                                  
                                  
 
                       <!--Fechamento da linha--> 
@@ -591,16 +636,23 @@ if(empty($_SESSION['lg'])) {
                                                    
 
                                 <!--Início da coluna-->    
-                                 <div class="bot1 col-md-2">
-                                        <button class="btn btn-warning btn-block" type="submit" onclick="selecionaAction('insert-cad-troca');"  >Salvar</button>
+                                 <div class="col-md-2 col-4">
+                                    <div class="col-">
+                                        <div class="form-group">                                            
+                                            <button class="btn btn-success btn-block" type="submit" onclick="selecionaAction('insert-cad-troca-teste');"  >Salvar</button>                                           
+                                        </div>    
+                                         </div>
                                  <!--Fim da coluna-->       
                                 </div>
 
 
                                  <!--Início da coluna-->     
-                                 <div class="bot1 col-md-2">
-                                   <button class="btn btn-warning btn-block" type="submit" onclick="selecionaAction('index');"  >Cancelar</button>
-
+                                 <div class="col-md-2 col-4 ">
+                                   <div class="col-"> 
+                                         <div class="form-group">
+                                          <!--  <input class="btn btn-success container btn-block" type="reset" name="password"  value="Limpar">-->
+                                        </div>    
+                                    </div>   
                                 <!--Fim da coluna-->   
                                 </form>   
                                 </div>                                
@@ -608,8 +660,26 @@ if(empty($_SESSION['lg'])) {
                 <!--Fechamento da linha-->  
                 </div>
 
+                <br />
+     
+   
+
+     <?php 
+     /***Debugando****/
+
+ /*  
+      ?>
+      <pre>
+        <?php
+      var_dump($info);
+        ?>
+      </pre>
+   */   
+      
+      ?>
 
 
+   
 
    <!--Fechamento container--> 
     </div>           
@@ -644,4 +714,7 @@ if(empty($_SESSION['lg'])) {
      
       </script>
 
+</html>
+
+</body>
 </html>
