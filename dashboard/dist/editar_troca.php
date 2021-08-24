@@ -17,6 +17,9 @@
 
 ?>
 
+
+
+
     <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,10 +57,10 @@
 
                   <!--multiplos submit-->
               <script type="text/javascript">
-                function selecionaAction(script){
-                    document.actionJava.action = script + '.php';
-                    document.actionJava.submit();
-                }
+                    function selecionaAction(script){
+                        document.actionJava.action = script + '.php';
+                        document.actionJava.submit();
+                    }
 
            </script>
 
@@ -310,15 +313,15 @@
                                                                               <div class="input-group-prepend">
                                                                                 <div class="input-group-text"> 
 
-                                                                                     <?php if ($info['status_filtro_cabine']==nao) {
+                                                                            <?php if ($info['status_filtro_combustivel']==nao) {
                                                                                               ?>
 
-                                                                                              <input type="radio" class="form-control" value="nao" name="status_filtro_cabine" checked="nao">NAO
-                                                                                              <input type="radio" value="sim" name="status_filtro_cabine">SIM <?php 
+                                                                                              <input type="radio" name="status_filtro_cabine" value="nao" checked="nao">NAO
+                                                                                              <input type="radio" name="status_filtro_cabine" value="sim">SIM <?php 
                                                                                             }else {
                                                                                               ?>
                                                                                               <input type="radio" name="status_filtro_cabine" value="sim" checked="sim">SIM 
-                                                                                              <input type="radio" value="nao" name="status_filtro_cabine">NAO<?php 
+                                                                                              <input type="radio" name="status_filtro_cabine" value="nao">NAO<?php 
                                                                                              
                                                                                             }
                                                                                               
@@ -501,11 +504,10 @@
                                                                     <div class="col">
                                                                         <label>Quantidade de óleo</label>
                                                                         <span class="campo-obrigatorio"></span>
-                                                                        <input type="number" name="qtd_oleo" value="<?php echo $info['qtd_oleo']; ?>" class="form-control">
+                                                                        <input type="text" name="qtd_oleo" value="<?php echo $info['qtd_oleo']; ?>" class="form-control">
                                                                         <!--campo hidden para salvar na tabela (proxima_troca) chave estrangeira servicos_cod_servicos -->
                                                                        <input type="hidden" name="servicos_cod_servicos" value="<?php echo $info['cod_servicos'] ; ?>">
-                                                                        <input type="hidden" name="cliente_codcliente" value="<?php echo $info['codcliente'] ; ?>">
-                                                                        <input type="hidden" name="veiculo_cod_veiculo" value="<?php echo $info['cod_veiculo'] ; ?>">
+                                                                      <input type="hidden" name="veiculo_cod_veiculo" value="<?php echo $info['cod_veiculo'] ; ?>">
 
 
 
@@ -610,7 +612,7 @@
                                               
                                                       <div class="   col">
                                                           <label > Placa</label>
-                                                          <input type="" name="" class="form-control" value="<?php  echo $info['placa'];  ?>">                                                         
+                                                          <input type="" name="" class="form-control" value="<?php  echo $info['placa_veiculo'];  ?>">                                                         
                                                       </div>
                                                 
                                            </div>
@@ -653,7 +655,24 @@
                                           <!--  <input class="btn btn-success container btn-block" type="reset" name="password"  value="Limpar">-->
                                         </div>    
                                     </div>   
-                                <!--Fim da coluna-->   
+                                <!--Fim da coluna-->  
+
+
+
+       <?php   
+
+
+
+      //Instanciando a class
+
+         $troca = new Troca();
+         $info = $troca->exibirProprietario($cod_veiculo);
+
+        ?>
+
+<!-- query que retornará o cod do cliente proprietároi do atual do veiclulo -->
+<input type="hidden" name="cliente_codcliente" value="<?php echo $info['codcliente'] ; ?>">
+     
                                 </form>   
                                 </div>                                
 
@@ -714,7 +733,12 @@
      
       </script>
 
+
+
 </html>
 
 </body>
 </html>
+
+
+

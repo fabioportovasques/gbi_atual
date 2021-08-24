@@ -220,7 +220,7 @@
  							} else {
  								
  								$sql =" select 
-								c.nome_cliente,c.sobrenome_cliente, v.placa_veiculo,v.modelo_veiculo,
+								c.nome_cliente,c.sobrenome_cliente,cod_veiculo, v.placa_veiculo,v.modelo_veiculo,
 								s.filtro_combustivel,s.filtro_cabine,s.obs_troca,s.filtro_ar,
 								s.filtro_oleo,data_troca,proxima_troca,
 								s.tipo_oleo,s.status_filtro_combustivel,

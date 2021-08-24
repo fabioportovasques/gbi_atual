@@ -86,6 +86,8 @@ if(empty($_SESSION['lg'])) {
 				      <th scope="col">Obs da Troca</th>
 				      <th scope="col">Data da Troca</th>
 				      <th scope="col">Data próxima Troca</th>
+				       <th scope="col">Ações</th>
+
 				      
 				    </tr>
 				  </thead>
@@ -119,12 +121,23 @@ if(empty($_SESSION['lg'])) {
 						      		 echo date('d/m/Y', strtotime($item['proxima_troca']));
 						       		?>
 						       </td>
+
+						       <td>
+						       	   <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
+
+						       </td>
 						      
-						    </tr>
+						   	</tr>
 
 						    <?php
 						}
+
+
 						?>
+						
+
+
+
 						
 					  </tbody>
 

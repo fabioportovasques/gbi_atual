@@ -98,7 +98,7 @@ if(empty($_SESSION['lg'])) {
 
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #65AEEE">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #022223">
             <a class="navbar-brand" href="#">
                 <?php  require 'nome_sistema.php'; ?>
             </a>
@@ -137,13 +137,13 @@ if(empty($_SESSION['lg'])) {
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #65AEEE" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" style="background-color: #022223" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                DASHBOARD
                             </a>
                             
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -206,7 +206,7 @@ if(empty($_SESSION['lg'])) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4" style="color: #112A46;">DASHBOARD</h1>
 
                             <br />
                             <br />
@@ -222,7 +222,7 @@ if(empty($_SESSION['lg'])) {
 
 
                                                                                 <div class="input-group mb-3">
-                                                                                  <input type="text" name="cpf_cliente" id="cpf_cnpj" class="form-control" placeholder="CPF"  data-toggle="tooltip" data-placement="top"
+                                                                                  <input type="text" name="cpf_cliente" id="cpf_cnpj" class="form-control" placeholder="Consultar Cliente"  data-toggle="tooltip" data-placement="top"
                                                                                    title="Pesquisar Cliente por CPF"  autocomplete="off" aria-label="Recipient's username"
                                                                                    aria-describedby="button-addon2" onblur="validar(getElementById('cpf_cnpj').value)" value="<?php echo $item['cpf_cliente']; ?>">
                                                                                   <div class="input-group-append">
@@ -242,7 +242,7 @@ if(empty($_SESSION['lg'])) {
                                    
 
                                               <div class="input-group mb-3">
-                                                  <input type="text" name="placa_veiculo" id="cpf_cnpj" class="form-control" placeholder="Placa Veículo"  autocomplete="off" aria-label="Recipient's username"
+                                                  <input type="text" name="placa_veiculo" id="cpf_cnpj" class="form-control" placeholder="Consultar Veículo"  autocomplete="off" aria-label="Recipient's username"
                                                    aria-describedby="button-addon2" onblur="validar(getElementById('cpf_cnpj').value)"
                                                    data-toggle="tooltip"  title="Insira a placa do veículo para pesquisar"  value="<?php echo $item['cpf_cliente']; ?>">
                                                   <div class="input-group-append">
@@ -263,7 +263,7 @@ if(empty($_SESSION['lg'])) {
 
 
                                        <div class="input-group mb-3">
-                                                  <input type="text" name="troca-oleo" id="cpf_cnpj" class="form-control" placeholder="Placa Veículo"  autocomplete="off" aria-label="Recipient's username"
+                                                  <input type="text" name="troca-oleo" id="cpf_cnpj" class="form-control" placeholder="Histórico do Veículo"  autocomplete="off" aria-label="Recipient's username"
                                                    aria-describedby="button-addon2" onblur="validar(getElementById('cpf_cnpj').value)"
                                                     target="_blank" data-toggle="tooltip"  title="Histórico de Trocas de óleo"  value="<?php echo $item['cpf_cliente']; ?>">
                                                   <div class="input-group-append">
@@ -289,7 +289,7 @@ if(empty($_SESSION['lg'])) {
                              <div class="col-xl-4 col-md-4" >
                                 <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body "style="color:black;background-color:#3CB371;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo realizadas</div>
+                                    <div class="card-body "style="color:black;background-color:#3CB371;  width:200px;height: 100px;font-size: 20px;" > Trocas de Óleo realizadas</div>
                                     <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
                                         <a class=""style="color:white; text-decoration:none;" href="trocas-realizadas.php">
 
@@ -316,14 +316,15 @@ if(empty($_SESSION['lg'])) {
 
                                           </a>
                                        
-                                        <div class="small text-white"><i class="fa fa-check-square-o" aria-hidden="true"></i></div>
+                                        <div class="small text-white">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-check-square-o" aria-hidden="true"></i></div>
                                     </div>
                                 </div>
                             </div>
                                <div class="col-xl-4 col-md-4" >
                                 <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body "style="color:black;background-color: #FF8C00;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo a Vencer</div>
+                                    <div class="card-body "style="color:black;background-color: #FF8C00;  width:200px;height: 100px;font-size: 20px;" > Trocas de Óleo a Vencer</div>
                                     <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
                                         <a class=""style="color:white; text-decoration:none;" href="trocas-avencer.php">
 
@@ -369,14 +370,15 @@ if(empty($_SESSION['lg'])) {
                                         </a>
 
                                           
-                                        <div class="small text-white"><i class="fas fa-bell-slash"></i></div>
+                                        <div class="small text-white">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fas fa-bell-slash"></i></div>
                                     </div>
                                 </div>
                             </div>
                              <div class="col-xl-4 col-md-4" >
                                 <div class="" style="background-color: #40595C";>
 
-                                    <div class="card-body "style="color:black;background-color: #FF4500;  width:200px;height: 100px;font-size: 20px;" > Troca de Óleo Vencidas</div>
+                                    <div class="card-body "style="color:black;background-color: #FF4500;  width:200px;height: 100px;font-size: 20px;" > Trocas de Óleo Vencidas</div>
                                     <div class="card-footer d-flex align-items-center "style="font-size: 40px;">
                                         <a class=""style="color:white; text-decoration:none;" href="trocas-vencidas.php">
                                     
@@ -430,7 +432,8 @@ if(empty($_SESSION['lg'])) {
 
                                         </a>
 
-                                        <div class="small text-white"><i class="fas fa-exclamation-triangle"></i></div>
+                                        <div class="small text-white">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fas fa-exclamation-triangle"></i></div>
                                     </div>
                                 </div>
                             </div>

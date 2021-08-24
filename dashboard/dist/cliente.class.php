@@ -369,7 +369,10 @@ class Cliente {
  								
  							} else {
  								
- 								$sql =" select  c.nome_cliente,c.sobrenome_cliente,c.cpf_cliente, v.tipo_veiculo, v.fabricante_veiculo, v.modelo_veiculo,v.placa_veiculo FROM cliente AS c
+ 								$sql =" select  c.nome_cliente,c.sobrenome_cliente,c.cpf_cliente, 
+ 								v.tipo_veiculo, v.fabricante_veiculo, cod_veiculo,v.modelo_veiculo,
+ 								v.placa_veiculo 
+ 								FROM cliente AS c
 								JOIN veiculo AS v ON c.codcliente = v.cliente_codcliente WHERE v.placa_veiculo like '%".$_POST['placa_veiculo']."%' order by v.placa_veiculo desc; ";  ;
 
  							}
@@ -432,5 +435,31 @@ class Cliente {
 					}		
 
 			}
+
+
+			public function exibirProprietario( ) {
+
+
+ 								$sql =" select  c.nome_cliente,c.sobrenome_cliente,c.cpf_cliente, v.tipo_veiculo, v.fabricante_veiculo,
+ 								v.modelo_veiculo,v.placa_veiculo 
+ 								FROM 
+ 								cliente AS c
+								JOIN veiculo AS v ON c.codcliente = v.cliente_codcliente";
+
+
+ 		 					$sql = $this->pdo->query($sql);
+
+							if ($sql->rowCount() > 0) {
+
+								//retorna todos os clientes
+								return $sql ->fetchAll();
+
+							}else {
+								return array();
+							}
+				
+					}		
+
+
 
 	}

@@ -13,7 +13,9 @@
 	
 	
 
-	*/
+	<?php 
+
+*/
 
 	 require 'troca.class.php';
 	
@@ -78,3 +80,5 @@
 				$troca ->adicionar($proxima_troca,$filtro_combustivel,$filtro_cabine,$obs_troca,$filtro_ar,$data_troca,
 					$filtro_oleo,$tipo_oleo,$status_filtro_combustivel,$status_filtro_cabine,$status_filtro_ar,$status_filtro_oleo,$km,$qtd_oleo,$cliente_codcliente,$veiculo_cod_veiculo);
 			}
+
+		

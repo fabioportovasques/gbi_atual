@@ -77,11 +77,16 @@ if(empty($_SESSION['lg'])) {
 				      <th scope="col">Fabricante do Veículo</th>
 				      <th scope="col">Modelo Do Veículo</th>
 				      <th scope="col">PLaca do Veículo</th>
+				      <th colspan="2">Ações</th>
 				      
 				    </tr>
 				  </thead>
 					  <tbody>
 						    <tr>
+
+
+
+
 						      
 						      <td><?php echo $item['nome_cliente']; ?></td>
 						      <td><?php echo $item['sobrenome_cliente']; ?></td>
@@ -90,8 +95,12 @@ if(empty($_SESSION['lg'])) {
 						      <td><?php echo $item['fabricante_veiculo']; ?></td>
 						      <td><?php echo $item['modelo_veiculo']; ?></td>
 						      <th scope="row"><?php echo $item['placa_veiculo']; ?></th>
+						      <th> 
+						       	   <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
+
+						       </th>
 						    </tr>
-						    
+						  
 					  </tbody>
 		</table> 
 </div>

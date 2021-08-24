@@ -534,6 +534,7 @@ if(empty($_SESSION['lg'])) {
                       <?php echo $item['status_filtro_cabine'];  ?>" > 
           
                   <!--<td data-toggle="tooltip"  title="Troca óleo Agora"><i class="glyphicon glyphicon-tint icones" onblur="validar(getElementById('cpf_cnpj').value)" >  </i></td>-->
+                <!--Referencia o codigo para enviar para troca -->  
                 <td align="center">
                    <a class="btn btn-outline-light"  href="editar_troca.php?cod_veiculo=<?php echo $item['cod_veiculo']; ?>"  role="button"> <img src= "img/oleo-de-carro.png" width="25px" style="color:red;">Trocar Agora</a>
                 </td>                  

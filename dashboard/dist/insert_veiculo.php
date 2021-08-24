@@ -27,7 +27,7 @@ $fabricante =$_POST['fabricante'];
 
 	if (!empty($_POST['placa_veiculo'])) {
 
-		/*remove a mascara do campo cpf/cnpj para inserir no banco*/
+		//remove a mascara do campo cpf/cnpj para inserir no banco
 		
 		
 
@@ -59,3 +59,4 @@ $fabricante =$_POST['fabricante'];
 	}
 
 	
+

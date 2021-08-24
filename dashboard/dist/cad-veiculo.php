@@ -435,27 +435,25 @@ if(empty($_SESSION['lg'])) {
                                             <!--Fim da coluna-->             
                                             </div>
 
-                                                     <!--Início da coluna-->         
-                                             <div class=" col-md-4">
+                                              
 
                                                 
 
-                                                    <div id="fabricante-area"  >
+                                                    <div id="fabricante-area" style="display:none" >
                                                     <!--Campo invisivel para coletar as informações do veiculo do arquivo JS e enviar para o insert_veiculo-->
                                                          <label for="cidade">Confirmar Marca Veículo</label>
                                                          <span class="campo-obrigatorio"></span>
-                                                         <select  class="form-control" id="fabricante"  name="fabricante" required="" >
-                                                            <option value="fabricante_veiculo" value="fabricante">Selecionar</option>
-                                                         </select>      
+                                                         <input  class="form-control" id="fabricante"  name="fabricante">
+                                                            
+                                                               
                                             
                                                       </div>
 
-                                                  <!--Fim da coluna-->           
-                                                    </div> 
+                                                  
 
 
                                                  <!--Início da coluna-->       
-                                                   <div class="col-md-2">
+                                                   <div class="col-md-4">
                                                          <div class="col">
                                                                         <label for="cidade">Cor do Veículo</label>
                                                                         <span class="campo-obrigatorio"></span>
@@ -470,7 +468,7 @@ if(empty($_SESSION['lg'])) {
                                                           
 
                                              <!--Início da coluna-->   
-                                                     <div class="marcador1 col-md-2">
+                                                     <div class="marcador1 col-md-4">
 
                                                       <div class="form-group">
                                                             <div class="   col">
