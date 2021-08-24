@@ -206,7 +206,7 @@ if(empty($_SESSION['lg'])) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4" style="color: #112A46;">DASHBOARD</h1>
+                        <h1 class="mt-4" style="color: #112A46;">DASHBOARD2</h1>
 
                             <br />
                             <br />
