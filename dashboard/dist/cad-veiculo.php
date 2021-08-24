@@ -391,13 +391,22 @@ if(empty($_SESSION['lg'])) {
                                                 <div id="marca-veiculo-area"> 
                                                     <label for="cidade">Marca do Veículo</label>
                                                     <span class="campo-obrigatorio">*</span>
+<<<<<<< HEAD
+                                                        <select class="form-control" id="marca_veiculo" name="marca_veiculo" aria-label="Default select example">
+                                                            
+                                                         </select>    
+=======
                                                         <select class="form-control" id="fabricante_veiculo"  name="fabricante_veiculo" >
                                                             <option value="resultado" >Selecionar</option>
                                                          </select>   
+>>>>>>> 56c1b387fbbe4a8339ab4f5917bafc78ae8134bc
                                                          <!--<input type="text" name="fabricante_veiculo" id="marca_veiculo" class="form-control" >-->
                                                     
                                                 </div>
+<<<<<<< HEAD
+=======
                                                 
+>>>>>>> 56c1b387fbbe4a8339ab4f5917bafc78ae8134bc
                                               </div>  
                                     </div>
 
@@ -425,7 +434,11 @@ if(empty($_SESSION['lg'])) {
                                                     <div class="   col"  id="modelo-veiculo-area">
                                                         <label for="">Modelo do Veículo</label>
                                                         <span class="campo-obrigatorio">*</span>
+<<<<<<< HEAD
+                                                            <select class="form-control" id="modelo_veiculo" name="modelo_veiculo" aria-label="Default select example">
+=======
                                                             <select class="form-control" id="modelo_veiculo" name="modelo_veiculo"  aria-label="Default select example">
+>>>>>>> 56c1b387fbbe4a8339ab4f5917bafc78ae8134bc
                                                                 
                                                              </select>    
                                                     </div>
